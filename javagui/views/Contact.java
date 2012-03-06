@@ -12,8 +12,8 @@ package javagui.views;
  */
  
  public class Contact {
-	public static final int MAX = 30; //Maximum characters
-	public static final int NUMBERMAX = 11;	//Valid phone number length
+	public static final int MAX_STRING = 31; //Maximum characters
+	public static final int PHONENUM_LENGTH = 11; //Phone number length
 	
 	private String m_firstName;
 	private String m_surname;
@@ -89,12 +89,14 @@ package javagui.views;
 	 * Sets the contact's first name.
 	 * @param m_firstName First name of the contact.
 	 */
-	public void SetFirstName(String m_firstName) {
-		if(m_firstName.length() < MAX){
+	public void SetFirstName(String m_firstName) throws Exception {
+		if(m_firstName.length() < MAX_STRING) {
 			this.m_firstName = m_firstName;
 		}
-		else{
-			System.out.println("Error: first name too long.");
+		else {
+			throw new Exception(
+			"Error: First name too long. Must be less than"+
+			+MAX_STRING+" characters.");
 		}
 	}
 	
@@ -102,12 +104,14 @@ package javagui.views;
 	 * Sets the contact's surname.
 	 * @param m_surname Surname of the contact.
 	 */
-	public void SetSurname(String m_surname) {
-		if(m_surname.length() < MAX){
+	public void SetSurname(String m_surname) throws Exception {
+		if(m_surname.length() < MAX_STRING) {
 			this.m_surname = m_surname;
 		}
-		else{
-			System.out.println("Error: surname too long.");
+		else {
+			throw new Exception(
+			"Error: Surname too long. Must be less than"+
+			+MAX_STRING+" characters.");
 		}
 	}
 	
@@ -115,12 +119,14 @@ package javagui.views;
 	 * Sets the contact's address.
 	 * @param m_address Address of contact.
 	 */
-	public void SetAddress(String m_address) {
-		if(m_address.length() < MAX){
+	public void SetAddress(String m_address) throws Exception {
+		if(m_address.length() < MAX_STRING) {
 			this.m_address = m_address;
 		}
-		else{
-			System.out.println("Error: address too long.");
+		else {
+			throw new Exception(
+			"Error: Address too long. Must be less than"+
+			+MAX_STRING+" characters.");
 		}
 	}
 	
@@ -128,12 +134,14 @@ package javagui.views;
 	 * Sets the contact's post code.
 	 * @param m_postcode Contact's post code.
 	 */
-	public void SetPostcode(String m_postcode) {
-		if(m_postcode.length() < MAX){
+	public void SetPostcode(String m_postcode) throws Exception {
+		if(m_postcode.length() < MAX_STRING) {
 			this.m_postcode = m_postcode;
 		}
-		else{
-			System.out.println("Error: postcode too long.");
+		else {
+			throw new Exception(
+			"Error: Post code too long. Must be less than"+
+			+MAX_STRING+" characters.");
 		}
 	}
 	
@@ -141,13 +149,14 @@ package javagui.views;
 	 * Sets the contact's mobile number.
 	 * @param m_mobileNo Contact's mobile number.
 	 */
-	public void SetMobileNo(String m_moblileNo) {
-		if(m_mobileNo.length() == NUMBERMAX){
+	public void SetMobileNo(String m_mobileNo) throws Exception {
+		if(m_mobileNo.length() == PHONENUM_LENGTH) {
 			this.m_mobileNo = m_mobileNo;
 		}
-		else{
-			System.out.println("Error: mobile number must be 11 " +
-							   "characters long.");
+		else {
+			throw new Exception(
+			"Error: Mobile number must be "
+			+PHONENUM_LENGTH+" digits long.");
 		}
 	}
 	
@@ -155,13 +164,14 @@ package javagui.views;
 	 * Sets the contact's home phone number.
 	 * @param m_homeNo contact's home phone number.
 	 */
-	public void SetHomeNo(String m_homeNo) {
-		if(m_homeNo.length() == NUMBERMAX){
+	public void SetHomeNo(String m_homeNo) throws Exception {
+		if(m_homeNo.length() == PHONENUM_LENGTH) {
 			this.m_homeNo = m_homeNo;
 		}
-		else{
-			System.out.println("Error: home number must be 11 " +
-							   "characters long.");
+		else {
+			throw new Exception(
+			"Error: Home phone number must be " +
+			+PHONENUM_LENGTH+" digits long.");
 		}
 	}
 	
@@ -169,12 +179,14 @@ package javagui.views;
 	 * Sets the contact's email address.
 	 * @param m_email Contact's email address.
 	 */
-	public void SetEmail(String m_email) {
-		if(m_email.length() < MAX){
+	public void SetEmail(String m_email) throws Exception {
+		if(m_email.length() < MAX_STRING) {
 			this.m_email = m_email;
 		}
-		else{
-			System.out.println("Error: email too long.");
+		else {
+			throw new Exception(
+			"Error: Email address too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 	}
 	
@@ -182,12 +194,14 @@ package javagui.views;
 	 * Sets the contact's web site.
 	 * @param m_website Contact's web site.
 	 */
-	public void SetWebsite(String m_website) {
-		if(m_website.length() < MAX){
+	public void SetWebsite(String m_website) throws Exception {
+		if(m_website.length() < MAX_STRING) {
 			this.m_website = m_website;
 		}
-		else{
-			System.out.println("Error: website too long.");
+		else {
+			throw new Exception(
+			"Error: Web site too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 	}
 	
@@ -195,12 +209,14 @@ package javagui.views;
 	 * Sets the contact's FAX number.
 	 * @param m_faxNo Contact's FAX number.
 	 */
-	public void SetFaxNo(String m_faxNo) {
-		if(m_faxNo.length() < MAX){
+	public void SetFaxNo(String m_faxNo) throws Exception {
+		if(m_faxNo.length() < MAX_STRING) {
 			this.m_faxNo = m_faxNo;
 		}
-		else{
-			System.out.println("Error: faxNo too long.");
+		else {
+			throw new Exception(
+			"Error: FAX number too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 	}
 	
@@ -221,74 +237,95 @@ package javagui.views;
 				   String m_address,   String m_postcode, 
 				   String m_mobileNo,  String m_homeNo, 
 				   String m_email,     String m_faxNo,
-				   String m_website) {
+				   String m_website) throws Exception {
 		
-		if(m_firstName.length() < MAX) {
+		if(m_firstName.length() < MAX_STRING) {
 			this.m_firstName = m_firstName;
 		}
 		else {
-			System.out.println("Error: first name too long.");
+			throw new Exception(
+			"Error: First name too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 		
-		if(m_surname.length() < MAX) {
+		if(m_surname.length() < MAX_STRING) {
 			this.m_surname = m_surname;
 		}
 		else {
-			System.out.println("Error: surname too long.");
+			throw new Exception(
+			"Error: Surname too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 		
-		if(m_address.length() < MAX) {
+		if(m_address.length() < MAX_STRING) {
 			this.m_address = m_address;
 		}
 		else {
-			System.out.println("Error: address too long.");
+			throw new Exception(
+			"Error: Address too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 		
-		if(m_postcode.length() < MAX) {
+		if(m_postcode.length() < MAX_STRING) {
 			this.m_postcode = m_postcode;
 		}
 		else {
-			System.out.println("Error: postcode too long.");
+			throw new Exception(
+			"Error: Postcode too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 		
-		if(m_mobileNo.length() == NUMBERMAX) {
+		if(m_mobileNo.length() == PHONENUM_LENGTH) {
 			this.m_mobileNo = m_mobileNo;
 		}
 		else {
-			System.out.println("Error: mobile number must be 11 " +
-							   "characters long.");
+			throw new Exception(
+			"Error: Mobile number must be " +
+			+PHONENUM_LENGTH+" digits long.");
 		}
 		
-		if(m_homeNo.length() == NUMBERMAX) {
+		if(m_homeNo.length() == PHONENUM_LENGTH) {
 			this.m_homeNo = m_homeNo;
 		}
 		else {
-			System.out.println("Error: home number must be 11 " +
-							   "characters long.");
+			throw new Exception(
+			"Error: Home phone number must be " +
+			+PHONENUM_LENGTH+" digits long.");
 		}
 		
-		if(m_email.length() < MAX) {
+		if(m_email.length() < MAX_STRING) {
 			this.m_email = m_email;
 		}
 		else {
-			System.out.println("Error: email too long.");
+			throw new Exception(
+			"Error: Email address too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 		
-		if(m_website.length() < MAX) {
+		if(m_website.length() < MAX_STRING) {
 			this.m_website = m_website;
 		}
 		else {
-			System.out.println("Error: website too long.");
+			throw new Exception(
+			"Error: Web site too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 		
-		if(m_faxNo.length() < MAX) {
+		if(m_faxNo.length() < MAX_STRING) {
 			this.m_faxNo = m_faxNo;
 		}
 		else {
-			System.out.println("Error: faxNo too long.");
+			throw new Exception(
+			"Error: FAX number too long. Must be less than "+
+			+MAX_STRING+" characters.");
 		}
 	}
 	
+	public static void main(String args[]) {
+		//Start Testing
+		
+		
+	}
 	
  }
  
