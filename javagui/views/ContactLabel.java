@@ -31,8 +31,8 @@ public class ContactLabel extends JLabel implements MouseListener {
 	 */
 	public ContactLabel(ContactGUI gui, Contact contact, ContactPanel contactPanel) {
 		m_contact = contact;
-		m_firstName = contact.getFirstName();
-		m_surname = contact.getSurname();
+		m_firstName = contact.GetFirstName();
+		m_surname = contact.GetSurname();
 		m_contactPanel = contactPanel;
 		m_gui = gui;
 		setOpaque(true);

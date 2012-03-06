@@ -116,15 +116,15 @@ public class ContactPanel extends JPanel{
 	public void SetInfo(Contact contact) {
 		
 		//set the new values from the given contact to the class variables
-		m_firstName = contact.getFirstName();
-		m_surname = contact.getSurname();
-		m_address = contact.getAddress();
-		m_postcode = contact.getPostcode();
-		m_mobileNo = contact.getMobileNo();
-		m_homeNo = contact.getHomeNo();
-		m_email = contact.getEmail();
-		m_faxNo = contact.getFaxNo();
-		m_website = contact.getWebsite();
+		m_firstName = contact.GetFirstName();
+		m_surname = contact.GetSurname();
+		m_address = contact.GetAddress();
+		m_postcode = contact.GetPostcode();
+		m_mobileNo = contact.GetMobileNo();
+		m_homeNo = contact.GetHomeNo();
+		m_email = contact.GetEmail();
+		m_faxNo = contact.GetFaxNo();
+		m_website = contact.GetWebsite();
 		
 		//set the text of the 'value' labels to the new values taken in 
 		m_nameValue.setText(m_firstName + " " + m_surname);

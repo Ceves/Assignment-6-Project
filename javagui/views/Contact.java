@@ -1,101 +1,95 @@
 package javagui.views;
 
-/** @file Contact.java
- * @author Daniel Mallory (632628)
+/** 
+ * @file Contact
+ * @author Daniel Mallory (632628) & Adam Barrell (632975)
  * @date 26/02/2012
- * @see ContactManager.h
- * @brief Defines what a contact is and what variables it needs to have.
+ * @brief This class creates an object to hold attributes on a contact.
  *  
- * This class defines what it is to be a contact, it describes the variables a contact needs to have,
- * and contains all the accessor and mutator methods for a contact. The ContactManager class then uses
- * this class to read in CSV files containing details about contacts, and add/delete contacts.
+ * This class defines the attributes which identify a contact, also provides
+ * getter and setter methods to retrieve data on a contact. The ContactManager
+ * class parses attributes from a contact object to a CSV file holding contacts.
  */
  
- public class Contact{
-	
-	private int MAX = 30;	//constant, max amount of characters
-	private int NUMBERMAX = 11;	//constant for mobile and home numbers
+ public class Contact {
+	public static final int MAX = 30; //Maximum characters
+	public static final int NUMBERMAX = 11;	//Valid phone number length
 	
 	private String m_firstName;
 	private String m_surname;
 	private String m_address;
 	private String m_postcode;
 	private String m_mobileNo;
-	private String m_homeNo;	//home and mobile number are strings, because we want them to behave as strings not as numbers
+	private String m_homeNo; //Defined as String so length can be validated
 	private String m_email;
 	private String m_faxNo;
-	private String m_website;	//a website associated with the contact, e.g. their facebook profile
+	private String m_website;
 	
-	//accessor methods
-	/** accessor for first name
-	* @return m_firstname - returns first name
-	*/
-	public String getFirstName(){
+	//Getter Methods
+	
+	/**
+	 * Gets contact's first name.
+	 * @return Returns contact's first name as a String.
+	 */
+	public String GetFirstName() {
 		return m_firstName;
 	}
 	
-	/** accessor for surname
-	* @return m_surname - returns surname
-	*/
-	public String getSurname(){
-		return m_surname;
-	}
+	/** 
+	 * Gets contact's surname.
+	 * @return Returns contact's surname as a String.
+	 */
+	public String GetSurname() { return m_surname; }
 	
-	/** accessor for address
-	* @return m_address - returns address
-	*/	
-	public String getAddress(){
-		return m_address;
-	}
+	/** 
+	 * Gets contact's address.
+	 * @return Returns contact's address as a String.
+	 */
+	public String GetAddress() { return m_address; }
 	
-	/** accessor for post code
-	* @return m_postcode - returns postcode
-	*/
-	public String getPostcode(){
-		return m_postcode;
-	}
+	/** 
+	 * Gets contact's post code.
+	 * @return Returns contact's post code as a String.
+	 */
+	public String GetPostcode() { return m_postcode; }
 		
-	/** accessor for mobile number
-	* @return m_mobileNo - returns mobile number
-	*/
-	public String getMobileNo(){
-		return m_mobileNo;
-	}
+	/** 
+	 * Gets contact's mobile number.
+	 * @return Returns contact's mobile number as a String.
+	 */
+	public String GetMobileNo() { return m_mobileNo;	}
 	
-	/** accessor for home number
-	* @return m_homeNo - returns home number
-	*/
-	public String getHomeNo(){
-		return m_homeNo;
-	}
+	/** 
+	 * Gets contact's home phone number.
+	 * @return Returns contact's home phone number as a String.
+	 */
+	public String GetHomeNo() { return m_homeNo;	}
 	
-	/** accessor for email
-	* @return m_email - returns email
-	*/
-	public String getEmail(){
-		return m_email;
-	}
+	/** 
+	 * Gets contact's email address.
+	 * @return Returns contact's email address as a String.
+	 */
+	public String GetEmail() { return m_email; }
 	
-	/** accessor for website
-	* @return m_website - returns website
-	*/
-	public String getWebsite(){
-		return m_website;
-	}
+	/** 
+	 * Gets contact's web site.
+	 * @return Returns contact's web site as a String.
+	 */
+	public String GetWebsite() {	return m_website; }
 	
-	/** accessor for fax number
-	* @return m_faxNo - returns fax number
-	*/
-	public String getFaxNo(){
-		return m_faxNo;
-	}
+	/** 
+	 * Gets contact's FAX number.
+	 * @return Returns contact's FAX number as a String.
+	 */
+	public String GetFaxNo() { return m_faxNo; }
 	
-	//mutator methods
+	//Setter Methods
 	
-	/** mutator for first name
-	* @param m_firstname - changes first name
-	*/
-	public void setFirstName(String m_firstName){
+	/**
+	 * Sets the contact's first name.
+	 * @param m_firstName First name of the contact.
+	 */
+	public void SetFirstName(String m_firstName) {
 		if(m_firstName.length() < MAX){
 			this.m_firstName = m_firstName;
 		}
@@ -104,10 +98,11 @@ package javagui.views;
 		}
 	}
 	
-	/** mutator for surname
-	* @param m_surname - changes surname
-	*/
-	public void setSurname(String m_surname){
+	/** 
+	 * Sets the contact's surname.
+	 * @param m_surname Surname of the contact.
+	 */
+	public void SetSurname(String m_surname) {
 		if(m_surname.length() < MAX){
 			this.m_surname = m_surname;
 		}
@@ -116,10 +111,11 @@ package javagui.views;
 		}
 	}
 	
-	/** mutator for address
-	* @param m_address - changes address
-	*/
-	public void setAddress(String m_address){
+	/** 
+	 * Sets the contact's address.
+	 * @param m_address Address of contact.
+	 */
+	public void SetAddress(String m_address) {
 		if(m_address.length() < MAX){
 			this.m_address = m_address;
 		}
@@ -128,10 +124,11 @@ package javagui.views;
 		}
 	}
 	
-	/** mutator for postcode
-	* @param m_postcode - changes postcode
-	*/
-	public void setPostcode(String m_postcode){
+	/** 
+	 * Sets the contact's post code.
+	 * @param m_postcode Contact's post code.
+	 */
+	public void SetPostcode(String m_postcode) {
 		if(m_postcode.length() < MAX){
 			this.m_postcode = m_postcode;
 		}
@@ -140,34 +137,39 @@ package javagui.views;
 		}
 	}
 	
-	/** mutator for mobile number
-	* @param m_mobileNo - changes mobile number
-	*/
-	public void setMobileNo(String m_moblileNo){
+	/** 
+	 * Sets the contact's mobile number.
+	 * @param m_mobileNo Contact's mobile number.
+	 */
+	public void SetMobileNo(String m_moblileNo) {
 		if(m_mobileNo.length() == NUMBERMAX){
 			this.m_mobileNo = m_mobileNo;
 		}
 		else{
-			System.out.println("Error: mobile number must be 11 characters long.");
+			System.out.println("Error: mobile number must be 11 " +
+							   "characters long.");
 		}
 	}
 	
-	/** mutator for home number
-	* @param m_homeNo - changes home number
-	*/
-	public void setHomeNo(String m_homeNo){
+	/** 
+	 * Sets the contact's home phone number.
+	 * @param m_homeNo contact's home phone number.
+	 */
+	public void SetHomeNo(String m_homeNo) {
 		if(m_homeNo.length() == NUMBERMAX){
 			this.m_homeNo = m_homeNo;
 		}
 		else{
-			System.out.println("Error: home number must be 11 characters long.");
+			System.out.println("Error: home number must be 11 " +
+							   "characters long.");
 		}
 	}
 	
-	/** mutator for email
-	* @param m_email - changes email
-	*/
-	public void setEmail(String m_email){
+	/** 
+	 * Sets the contact's email address.
+	 * @param m_email Contact's email address.
+	 */
+	public void SetEmail(String m_email) {
 		if(m_email.length() < MAX){
 			this.m_email = m_email;
 		}
@@ -176,10 +178,11 @@ package javagui.views;
 		}
 	}
 	
-	/** mutator for website
-	* @param m_website - changes website
-	*/
-	public void setWebsite(String m_website){
+	/** 
+	 * Sets the contact's web site.
+	 * @param m_website Contact's web site.
+	 */
+	public void SetWebsite(String m_website) {
 		if(m_website.length() < MAX){
 			this.m_website = m_website;
 		}
@@ -188,10 +191,11 @@ package javagui.views;
 		}
 	}
 	
-	/** mutator for faxNo
-	* @param m_faxNo - changes fax number
-	*/
-	public void setFaxNo(String m_faxNo){
+	/** 
+	 * Sets the contact's FAX number.
+	 * @param m_faxNo Contact's FAX number.
+	 */
+	public void SetFaxNo(String m_faxNo) {
 		if(m_faxNo.length() < MAX){
 			this.m_faxNo = m_faxNo;
 		}
@@ -200,80 +204,87 @@ package javagui.views;
 		}
 	}
 	
-	/**creates contact object to hold contact data
-	* @param m_firstName - sets contact first name
-	* @param m_surname - sets contact surname
-	* @param m_address - sets contact address
-	* @param m_postcode - sets contact postcode
-	* @param m_mobileNo - sets contact mobile number
-	* @param m_homeNo - sets contact home number
-	* @param m_email - sets contact email
-	* @param m_faxNo - sets contact fax number
-	* @param m_website - sets contact website
-	*/
-	public Contact(String m_firstName, String m_surname, String m_address, String m_postcode,
-				 String m_mobileNo, String m_homeNo, String m_email, String m_faxNo, String m_website){
+	/**
+	 * Creates an object of the class to initialise contact data.
+	 * 
+	 * @param m_firstName The contact's first name
+	 * @param m_surname The contact's surname
+	 * @param m_address The contact's address
+	 * @param m_postcode The contact's post code
+	 * @param m_mobileNo The contact's mobile number
+	 * @param m_homeNo The contact's home number
+	 * @param m_email The contact's email
+	 * @param m_faxNo The contact's FAX number
+	 * @param m_website The contact's web site
+	 */
+	public Contact(String m_firstName, String m_surname,
+				   String m_address,   String m_postcode, 
+				   String m_mobileNo,  String m_homeNo, 
+				   String m_email,     String m_faxNo,
+				   String m_website) {
 		
-		if(m_firstName.length() < MAX){
+		if(m_firstName.length() < MAX) {
 			this.m_firstName = m_firstName;
 		}
-		else{
+		else {
 			System.out.println("Error: first name too long.");
 		}
 		
-		if(m_surname.length() < MAX){
+		if(m_surname.length() < MAX) {
 			this.m_surname = m_surname;
 		}
-		else{
+		else {
 			System.out.println("Error: surname too long.");
 		}
 		
-		if(m_address.length() < MAX){
+		if(m_address.length() < MAX) {
 			this.m_address = m_address;
 		}
-		else{
+		else {
 			System.out.println("Error: address too long.");
 		}
 		
-		if(m_postcode.length() < MAX){
+		if(m_postcode.length() < MAX) {
 			this.m_postcode = m_postcode;
 		}
-		else{
+		else {
 			System.out.println("Error: postcode too long.");
 		}
 		
-		if(m_mobileNo.length() == NUMBERMAX){
+		if(m_mobileNo.length() == NUMBERMAX) {
 			this.m_mobileNo = m_mobileNo;
 		}
-		else{
-			System.out.println("Error: mobile number must be 11 characters long.");
+		else {
+			System.out.println("Error: mobile number must be 11 " +
+							   "characters long.");
 		}
 		
-		if(m_homeNo.length() == NUMBERMAX){
+		if(m_homeNo.length() == NUMBERMAX) {
 			this.m_homeNo = m_homeNo;
 		}
-		else{
-			System.out.println("Error: home number must be 11 characters long.");
+		else {
+			System.out.println("Error: home number must be 11 " +
+							   "characters long.");
 		}
 		
-		if(m_email.length() < MAX){
+		if(m_email.length() < MAX) {
 			this.m_email = m_email;
 		}
-		else{
+		else {
 			System.out.println("Error: email too long.");
 		}
 		
-		if(m_website.length() < MAX){
+		if(m_website.length() < MAX) {
 			this.m_website = m_website;
 		}
-		else{
+		else {
 			System.out.println("Error: website too long.");
 		}
 		
-		if(m_faxNo.length() < MAX){
+		if(m_faxNo.length() < MAX) {
 			this.m_faxNo = m_faxNo;
 		}
-		else{
+		else {
 			System.out.println("Error: faxNo too long.");
 		}
 	}

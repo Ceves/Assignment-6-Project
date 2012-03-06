@@ -178,15 +178,15 @@ public class ContactManager{
 		String entry = "";
 		
 		//assign the fields in order to each array index
-        entries[0] = contact.getFirstName();
-        entries[1] = contact.getSurname(); 
-        entries[2] = contact.getAddress();
-        entries[3] = contact.getPostcode();
-   		entries[4] = contact.getMobileNo();
-		entries[5] = contact.getHomeNo();
-		entries[6] = contact.getEmail();
-		entries[7] = contact.getFaxNo();
-		entries[8] = contact.getWebsite();
+        entries[0] = contact.GetFirstName();
+        entries[1] = contact.GetSurname(); 
+        entries[2] = contact.GetAddress();
+        entries[3] = contact.GetPostcode();
+   		entries[4] = contact.GetMobileNo();
+		entries[5] = contact.GetHomeNo();
+		entries[6] = contact.GetEmail();
+		entries[7] = contact.GetFaxNo();
+		entries[8] = contact.GetWebsite();
 	    
 		//iterate through each of the indices of the array, adding the value to the string
 		//while adding a comma after each entry, as long as it's not the final entry 
