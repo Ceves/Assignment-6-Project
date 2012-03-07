@@ -2,7 +2,7 @@ package javagui.views;
 
 /**
 * @ file EventManager
-* @ author Daniel Lewis
+* @ author Daniel Lewis & Callum Eves 636242
 * @ brief makes a event object incapsulating all the need data
 * @ this class constructs a object from all of the events data
 * 
