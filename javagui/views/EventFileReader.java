@@ -1,21 +1,16 @@
 package javagui.views;
 
 /**
-* \ file 	EventFileReader
-* \ author	Daniel Lewis
-* \ date
-* \ see
+* @file EventFileReader
+* @author Daniel Lewis
 *
-* \ brief CSV file reader and writer for the events csv file  
+* @brief CSV file reader and writer for the events csv file  
 *
-* This class reads in the events csv file and parses the input to insure the data is in the correct format
-* then constructs the infomation in to events and saves the events in a arraylist. the class also used to write the events to file. 
+* This class reads in the events csv file and parses the input 
+* to insure the data is in the correct format. It then constructs the 
+* infomation in to events and saves the events in a arraylist. the 
+* class also used to write the events to file. 
 */
-
-
-
-
-
 
 
 import java.io.*;
@@ -33,20 +28,18 @@ public class EventFileReader {
 	
 
 	//Constructor
-	
 	public EventFileReader()
 	{
 	
 	}
 	
-	/**Saves the events in a Arraylist and save them to a file.
-	*
-	*@\param ArrayList<Event> SEventArray the array that is to be saved.
-	*@\param m_SFileLocation the name of the file you want to save too
-	*
-	*
-	*/
 	
+	/**
+	* Saves the events in a Arraylist and save them to a file.
+	*
+	* @param ArrayList<Event> SEventArray the array that is to be saved.
+	* @param m_SFileLocation the name of the file you want to save to
+	*/
 	public void Save(ArrayList<Event> SEventArray, String m_SFileLocation)
 	{
 		this.m_SFileLocation = m_SFileLocation;
@@ -104,12 +97,11 @@ catch(IOException e)
 
 	}
 	
-	/**load data from csv file.
+	/**
+	* loadS data from csv file.
 	*
-	*@\param m_fileLocation the path to the file that is to be loaded.
-	*
-	*@\return a ArrayList<Event> with all the data from the file converted into the correct formats.
-	*
+	* @param m_fileLocation the path to the file that is to be loaded.
+	* @return a ArrayList<Event> with all the data from the file converted into the correct formats.
 	*/
 	public ArrayList<Event> load(String m_fileLocation)
 	{
