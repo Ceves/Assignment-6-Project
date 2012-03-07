@@ -1,15 +1,14 @@
 package javagui.views;
 
 /**
-* \ file 	EventManager
-* \ author	Daniel Lewis
-* \ date
-* \ see
-*
-* \ brief makes a event object incapsulating all the need data
-*
-* \ this class constructs a object from all of the events data
+* @ file EventManager
+* @ author Daniel Lewis
+* @ brief makes a event object incapsulating all the need data
+* @ this class constructs a object from all of the events data
 * 
+*  This class defines the attributes that define an Event.
+*  This is accomplished by creating accessor and mutator methods
+*  to get the data.
 */
 
 
