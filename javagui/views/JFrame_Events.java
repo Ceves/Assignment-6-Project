@@ -1,6 +1,5 @@
 package javagui.views;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
@@ -26,13 +25,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import javax.swing.JComboBox;
-import javax.swing.JCheckBox;
-import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 
+/**
+ * This class LOOKS like it makes a new JFrame for the events input window
+ * @author Alfei
+ *
+ */
 public class JFrame_Events extends JFrame {
 
 	private JPanel contentPane;
@@ -49,6 +50,8 @@ public class JFrame_Events extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * 
+	 * IS THIS NEEDED?! JFrame_Main is the main app!
 	 */
 	public static void main(String[] args) {
 		try {
@@ -70,6 +73,9 @@ public class JFrame_Events extends JFrame {
 	}
 	/**
 	 * Create the frame.
+	 * 
+	 * MASSIVE MASSIVE METHOD
+	 * WHAT THE HOLY HELL
 	 */
 	public JFrame_Events() {
 		setTitle("Events - Digital Organizer - | cs235group9a4 |");

@@ -22,7 +22,6 @@ import javax.swing.JTable;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,7 +37,7 @@ import java.awt.event.MouseEvent;
 public class JFrame_Main extends JFrame {
 
 	/**
-	 * 
+	 * THIS IS THE MAIN APPLICATION
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -489,6 +488,7 @@ public class JFrame_Main extends JFrame {
 				String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class
 			};
 			@SuppressWarnings("unchecked")
+			//New classes?
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
@@ -517,6 +517,7 @@ public class JFrame_Main extends JFrame {
 
 	}
 		
+	//public toString override
 	public static String monthToString(){
 		String monthlyViewString;
         switch (global_calendar.get(Calendar.MONTH)) {
@@ -553,6 +554,7 @@ public class JFrame_Main extends JFrame {
         return monthlyViewString;
 	}
 	
+	//refresh the monthly view
 	public static void refresh_monthly_view(){
 		global_events = efr.load("EVENTS.csv");//test Load()
 		Calendar local_calendar = global_calendar;
@@ -591,7 +593,7 @@ public class JFrame_Main extends JFrame {
 	}
 	
 	
-	
+	//+ month
 	public static void increment_month(){
 		int month = global_calendar.get(Calendar.MONTH);
 		month = month + 1;
@@ -599,6 +601,7 @@ public class JFrame_Main extends JFrame {
 		refresh_monthly_view();
 	}
 	
+	//- month
 	public static void decrement_month(){
 		int month = global_calendar.get(Calendar.MONTH);
 		month = month - 1;

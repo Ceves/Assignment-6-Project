@@ -50,7 +50,6 @@ public class ContactLabel extends JLabel implements MouseListener {
 		return m_contact;
 	}
 	
-	//physically can't change these public method named to start with an uppercase character
 	/**
 	 * The mouseEntered method handles everything that happens
 	 * when the cursor enters the bounds of a ContactLabel
