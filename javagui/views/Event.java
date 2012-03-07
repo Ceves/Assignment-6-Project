@@ -17,122 +17,121 @@ import java.util.Date;
  
 public class Event {
 
-	// Accessor methords
-	/**get event id
-	*
-	*@\return event id 
+	// Accessor methods
+	
+	/**
+	* get event id
+	*@return Returns the Event id 
 	*/
-	public String GetId()
-	{
+	public String GetId(){
 	return m_id;
 	}
-	/**get event Category
-	*
-	*@\return event Category
+	
+	
+	/**
+	* get event Category
+	*@return Returns event Category
 	*/
-	public int GetCategory()
-	{
+	public int GetCategory() {
 		return m_category;
 	}
 	
-	/**get event title
-	*
-	*@\return event title
+	
+	/**
+	* get event title
+	*@return  Returns the event title
 	*/
-	public String GetTitle()
-	{
+	public String GetTitle(){
 		return m_title;
 	}
 	
-	/**get event Location
-	*
-	*@\return event Location
+	
+	/**
+	* get event Location
+	* @return Returns the event Location
 	*/
-	public String GetLocation()
-	{
+	public String GetLocation() {
 		return m_location;
 	}
 	
-	/**get event Address
-	*
-	*@\return event Address
+	
+	/**
+	* get event Address
+	* @return Returns the event Address
 	*/
-	public String GetAddress()
-	{
+	public String GetAddress(){
 		return m_address;
 	}
 	
-	/**get event Start Date
-	*
-	*@\return event Start Date
+	
+	/**
+	* get event Start Date
+	* @return Returns the event Start Date
 	*/
-	public Date GetSDate()
-	{
+	public Date GetSDate(){
 		return m_sDate;
 	}
 	
-	/**get event End Date
-	*
-	*@\return event End Date
+	
+	/**
+	* get event End Date
+	* @return Returns the event End Date
 	*/
-	public Date GetEDate()
-	{
+	public Date GetEDate() {
 		return m_eDate;
 	}
 	
-	/**get event Start Time
-	*
-	*@\return event Start Time
+	
+	/**
+	* get event Start Time
+	* @return Returns the event Start Time
 	*/
-	public String GetSTime()
-	{
+	public String GetSTime(){
 		return m_sTime;
 	}
 	
-	/**get event End Time
-	*
-	*@\return event End Time
+	
+	/**
+	* get event End Time
+	* @return Returns the event End Time
 	*/
-	public String GetETime()
-	{
+	public String GetETime(){
 		return m_eTime;
 	}
 	
-	/**get event Repeat value
-	*
-	*@\return event Repeat value
+	
+	/**
+	* get event Repeat value
+	* @return Returns an events Repeat value
 	*/
-	public int GetRepeat()
-	{
+	public int GetRepeat(){
 		return m_repeat;
 	}
 	
-	/**get event Description
-	*
-	*@\return event Description
+	
+	/**
+	* get event Description
+	* @return Returns the event Description
 	*/
-	public String GetDescription()
-	{
+	public String GetDescription(){
 		return m_description;
 	}
 	
 	
-	/**set event id
-	*
-	*@\param new event id
+	/**
+	* set event id
+	* @param id sets the new event id
 	*/
-	
-	public void SetId(String id)
-	{
+	public void SetId(String id){
 		m_id = id;
 	}
 	
-	/**set event Category
-	*
-	*@\param new event Category
+	
+	/**
+	* set event Category
+	* @param category sets the new event Category
 	*/
-	public void SetCategory(int category)
-	{
+	public void SetCategory(int category) {
 		if (category <= m_maxCategory)
 			{
 				m_category = category;
@@ -143,9 +142,10 @@ public class Event {
 			}
 	}
 	
-	/**set event title
-	*
-	*@\param new event title
+	
+	/**
+	* set event title
+	* @param title sets the new event title
 	*/
 	public void SetTitle(String title)
 	{
@@ -159,9 +159,10 @@ public class Event {
 			}
 	}
 	
-	/**set event location
-	*
-	*@\param new event location
+	
+	/**
+	* set event location
+	* @param location set the new event location
 	*/
 	public void SetLocation(String location)
 	{
@@ -175,9 +176,10 @@ public class Event {
 			}
 	}
 	
-	/**set event address
-	*
-	*@\param new event address
+	
+	/**
+	* set event address
+	* @param address sets the new event address
 	*/
 	public void SetAddress(String address)
 	{
@@ -192,45 +194,46 @@ public class Event {
 		
 	}
 	
-	/**set event start date
-	*
-	*@\param new event start date
+	
+	/**
+	* set event start date
+	* @param sDate sets the new event start date
 	*/
-	public void SetSDate(Date sDate)
-	{
+	public void SetSDate(Date sDate) {
 		m_sDate = sDate;
 	}
 	
-	/**set event end date
-	*
-	*@\param new event end date
+	
+	/**
+	* set event end date
+	* @param eDate sets the new event end date
 	*/
-	public void SetEDate(Date eDate)
-	{
+	public void SetEDate(Date eDate){
 		m_eDate = eDate;
 	}
 	
-	/**set event start Time
-	*
-	*@\param new event Start Time
+	
+	/**
+	* set event start Time
+	* @param sTime sets the new event Start Time
 	*/
-	public void SetSTime(String sTime)
-	{
+	public void SetSTime(String sTime){
 		m_sTime = sTime;
 	}
 	
-	/**set event End Time 
-	*
-	*@\param new event End Time
+	
+	/**
+	* set event End Time 
+	* @param eTime sets the new event End Time
 	*/
-	public void SetETime(String eTime)
-	{
+	public void SetETime(String eTime){
 		m_eTime = eTime;
 	}
 	
-	/**set event repeat value
-	*
-	*@\param new event repeat value
+	
+	/**
+	* set event repeat value
+	* @param repeat sets the new event repeat value
 	*/
 	public void SetRepeat(int repeat)
 	{
@@ -244,9 +247,10 @@ public class Event {
 			}
 	}
 	
-	/**set event descripion 
-	*
-	*@\param new event description
+	
+	/**
+	* set event descripion 
+	* @param description sets the new event description
 	*/
 	public void SetDescription(String description)
 	{
@@ -260,22 +264,22 @@ public class Event {
 			}
 	}
 	
-	
 					
 	
-	/**create event object to hold event data 
+	/**
+	* creates an event object to hold the event data 
 	*
-	*@\param set event id
-	*@\param set event category
-	*@\param set event title
-	*@\param set event location
-	*@\param set event address
-	*@\param set event Start date
-	*@\param set event End date
-	*@\param set event Start time
-	*@\param set event End Time
-	*@\param set event repeat value
-	*@\param set event description 
+	*@param id 	  set event id
+	*@param category  set event category
+	*@param title	  set title
+	*@param location  set location
+	*@param address	  set address
+	*@param sDate	  set Start date
+	*@param eDate	  set End date
+	*@param sTime	  set Start time
+	*@param eTime	  set End Time
+	*@param repeat	  set repeat value
+	*@param description  set description 
 	*/
 
 	 public Event(String id,int category, String title, String location, 
@@ -345,7 +349,7 @@ public class Event {
 	
 
 	
-	// varibles 
+	// varibles for testing
 	private int m_maxCategory = 10;
 	private int m_maxTitle = 30;
 	private int m_maxLocation = 30;
@@ -367,7 +371,8 @@ public class Event {
 	
 	// Test methord 
 	public static void main(String[] args)
-	{
+	{	
+		//sets a new start amd end date for the test event
 		Date sDate = new Date(07/8/12);
 		Date eDate = new Date(07/8/12);
 		
@@ -377,7 +382,6 @@ public class Event {
 
 		
 		//test accessor methords
-		
 			System.out.println();
 			System.out.println("new EVENT");
 			System.out.println();
@@ -396,7 +400,6 @@ public class Event {
 		//test Mutator methords
 			sDate = new Date(05/2/13);
 		
-			
 			e.SetId("E2");
 			e.SetCategory(3);
 			e.SetTitle("new title");
