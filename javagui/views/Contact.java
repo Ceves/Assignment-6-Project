@@ -1,7 +1,7 @@
 package javagui.views;
 
 /** 
- * @file Contact
+ * @file Contact.java
  * @author Daniel Mallory (632628) & Adam Barrell (632975)
  * @date 26/02/2012
  * @brief This class creates an object to hold attributes on a contact.
@@ -10,8 +10,8 @@ package javagui.views;
  * getter and setter methods to retrieve data on a contact. The ContactManager
  * class parses attributes from a contact object to a CSV file holding contacts.
  */
- 
  public class Contact {
+
 	public static final int MAX_STRING = 31; //Maximum characters
 	public static final int PHONENUM_LENGTH = 11; //Phone number length
 	
