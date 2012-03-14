@@ -1,18 +1,5 @@
 package javagui.views;
 
-/**
-* @file EventFileReader
-* @author Daniel Lewis
-*
-* @brief CSV file reader and writer for the events csv file  
-*
-* This class reads in the events csv file and parses the input 
-* to insure the data is in the correct format. It then constructs the 
-* infomation in to events and saves the events in a arraylist. the 
-* class also used to write the events to file. 
-*/
-
-
 import java.io.*;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
@@ -21,10 +8,28 @@ import java.util.Date;
 import java.text.*;
 import java.io.FileWriter;
 
-
+/* Changelog:
+ * Adam - Restructured code, global variables at top
+ */
+/**
+* @file EventFileReader
+* @author Daniel Lewis & Adam Barrell
+*
+* @brief CSV file reader and writer for the events csv file  
+*
+* This class reads in the events csv file and parses the input 
+* to insure the data is in the correct format. It then constructs the 
+* infomation in to events and saves the events in a arraylist. the 
+* class also used to write the events to file.
+*/
 public class EventFileReader {
 	
-
+	//varables
+	private ArrayList <String> m_dataArray = new ArrayList<String>();
+	private ArrayList <Event> m_eventArray = new ArrayList<Event>();
+	public static String FILE_LOCATION = "EVENTS.csv";
+	private DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+	
 	//Constructor
 	public EventFileReader()
 	{
@@ -40,11 +45,11 @@ public class EventFileReader {
 	*/
 	public void Save(ArrayList<Event> SEventArray, String m_SFileLocation)
 	{
-		this.m_SFileLocation = m_SFileLocation;
+		this.FILE_LOCATION = m_SFileLocation;
 
 		try
 		{
-			FileWriter writer = new FileWriter(this.m_SFileLocation);
+			FileWriter writer = new FileWriter(this.FILE_LOCATION);
 			for(int i = 0; i < SEventArray.size(); i++)
 			{
 				String id = SEventArray.get(i).GetId();
@@ -209,14 +214,7 @@ catch(IOException e)
 		
 	
 	
-	}
-	
-	//varables
-	private ArrayList <String> m_dataArray = new ArrayList<String>();
-	private ArrayList <Event> m_eventArray = new ArrayList<Event>();
-	private String m_SFileLocation = "EVENTS.csv";
-	private DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
-	
+	}	
 	
 	// Test methord 
 	public static void main(String[] args)
