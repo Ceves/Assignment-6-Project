@@ -14,14 +14,12 @@ package javagui.views;
 
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.text.DateFormat;
 import java.util.Date;
 import java.text.*;
-import java.io.FileWriter; 
-import java.io.Writer;
+import java.io.FileWriter;
 
 
 public class EventFileReader {
@@ -50,7 +48,6 @@ public class EventFileReader {
 			for(int i = 0; i < SEventArray.size(); i++)
 			{
 				String id = SEventArray.get(i).GetId();
-				String category = Integer.toString(SEventArray.get(i).GetCategory());
 				String title = SEventArray.get(i).GetTitle();
 				String location = SEventArray.get(i).GetLocation();
 				String address = SEventArray.get(i).GetAddress();
@@ -62,8 +59,6 @@ public class EventFileReader {
 				String description = SEventArray.get(i).GetDescription();
 				
 				writer.append(id);
-				writer.append(',');
-				writer.append(category);
 				writer.append(',');
 				writer.append(title);
 				writer.append(',');
@@ -106,34 +101,25 @@ catch(IOException e)
 	public ArrayList<Event> load(String m_fileLocation)
 	{
 	
-	this.m_fileLocation = m_fileLocation;
-		try 
+	try 
 		{
 			BufferedReader br = new BufferedReader(new FileReader(m_fileLocation));
 			String line = "";
 			StringTokenizer st = null;
 
-			int lineNumber = 0; 
-			int tokenNumber = 0;
+			
 
 			//read comma separated file line by line
 			
 			while ((line = br.readLine()) != null) 
 			{
-				lineNumber++;
 				//use comma as token separator
 				st = new StringTokenizer(line,",");
 
 				while (st.hasMoreTokens()) {
 					
 					m_dataArray.add(st.nextToken());
-					//display csv values
-					//System.out.print(st + "  ");
-					//System.out.println(tokenNumber);
-					tokenNumber++;
 				}
-
-			tokenNumber = 0;
        }
 			formatData();
 			
@@ -153,8 +139,6 @@ catch(IOException e)
 	Date sDate = new Date();
 	Date eDate = new Date();
 	
-	int index = 0;
-	
 	for(int i=0;i < m_dataArray.size();i++)
 	{
 		//System.out.println("id = "+m_dataArray.get(i));
@@ -164,7 +148,7 @@ catch(IOException e)
 		i++;
 		//System.out.println("cat = "+m_dataArray.get(i));
 		
-		int category = Integer.parseInt(m_dataArray.get(i));
+		Integer.parseInt(m_dataArray.get(i));
 		
 		i++;
 		//System.out.println("title = "+m_dataArray.get(i));
@@ -217,7 +201,7 @@ catch(IOException e)
 		
 		String description = m_dataArray.get(i);
 	
-		Event event = new Event(id,category,title,location,address,sDate,eDate,sTime,eTime,repeat,description);
+		Event event = new Event(id,title,location,address,sDate,eDate,sTime,eTime,repeat,description);
 		
 		m_eventArray.add(event);
 	
@@ -230,9 +214,7 @@ catch(IOException e)
 	//varables
 	private ArrayList <String> m_dataArray = new ArrayList<String>();
 	private ArrayList <Event> m_eventArray = new ArrayList<Event>();
-	private String m_fileLocation = "EVENTS.csv";
 	private String m_SFileLocation = "EVENTS.csv";
-	private String m_fileName = "EVENTS.csv";
 	private DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
 	
 	
@@ -251,7 +233,6 @@ catch(IOException e)
 			System.out.println("EVENT "+ i);
 			System.out.println();
 			System.out.println(a.get(i).GetId());
-			System.out.println(a.get(i).GetCategory());
 			System.out.println(a.get(i).GetTitle());
 			System.out.println(a.get(i).GetLocation());
 			System.out.println(a.get(i).GetAddress());

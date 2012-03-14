@@ -13,6 +13,7 @@ import javax.swing.*;
 
 import java.awt.*;
 
+@SuppressWarnings("serial")
 public class ContactPanel extends JPanel{
 	
 	//these are the labels that will mark which piece of data that you

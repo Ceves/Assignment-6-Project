@@ -19,14 +19,12 @@ package javagui.views;
 
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.text.DateFormat;
 import java.util.Date;
 import java.text.*;
-import java.io.FileWriter; 
-import java.io.Writer;
+import java.io.FileWriter;
 
 
 public class TaskFileReader {
@@ -109,34 +107,25 @@ catch(IOException e)
  public ArrayList<Task> load(String m_fileLocation)
  {
  
- this.m_fileLocation = m_fileLocation;
-  try 
+ try 
   {
    BufferedReader br = new BufferedReader(new FileReader(m_fileLocation));
    String line = "";
    StringTokenizer st = null;
 
-   int lineNumber = 0; 
-   int tokenNumber = 0;
+   
 
    //read comma separated file line by line
    
    while ((line = br.readLine()) != null) 
    {
-    lineNumber++;
     //use comma as token separator
     st = new StringTokenizer(line,",");
 
     while (st.hasMoreTokens()) {
      
      m_dataArray.add(st.nextToken());
-     //display csv values
-     //System.out.print(st + "  ");
-     //System.out.println(tokenNumber);
-     tokenNumber++;
     }
-
-   tokenNumber = 0;
        }
    formatData();
    
@@ -155,8 +144,6 @@ catch(IOException e)
  DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
  Date sDate = new Date();
  Date eDate = new Date();
- 
- int index = 0;
  
  for(int i=0;i < m_dataArray.size();i++)
  {
@@ -182,7 +169,7 @@ catch(IOException e)
   i++;
   //System.out.println("address = "+m_dataArray.get(i));
   
-  String address = m_dataArray.get(i);
+  m_dataArray.get(i);
   
   i++;
  //System.out.println("sdate = "+m_dataArray.get(i));
@@ -233,9 +220,7 @@ catch(IOException e)
  //varables
  private ArrayList <String> m_dataArray = new ArrayList<String>();
  private ArrayList <Task> m_taskArray = new ArrayList<Task>();
- private String m_fileLocation = "TASKS.csv";
  private String m_SFileLocation = "TASKS.csv";
- private String m_fileName = "TASKS.csv";
  private DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
  
  

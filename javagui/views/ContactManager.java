@@ -12,7 +12,6 @@ package javagui.views;
 import java.util.*;
 import java.io.*;
 import java.lang.reflect.Array;
-import java.awt.event.*;
 
 public class ContactManager{
 	
@@ -136,6 +135,7 @@ public class ContactManager{
 	 * @param fileLocation the location of the main contacts csv file to be read.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("rawtypes")
 	public void Load(String fileLocation) throws Exception {
 		/*
 		 * A note to make here is that the csvreader method .readAll() reads each line of the csv file

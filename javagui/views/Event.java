@@ -2,17 +2,18 @@ package javagui.views;
 
 /**
 * @ file EventManager
-* @ author Daniel Lewis & Callum Eves 
+* @ author Daniel Lewis
 * @ brief makes a event object incapsulating all the need data
 * @ this class constructs a object from all of the events data
 * 
 *  This class defines the attributes that define an Event.
 *  This is accomplished by creating accessor and mutator methods
 *  to get the data.
+*  
+*  Commented by Callum Eves 
 */
 
 
-import java.text.DateFormat;
 import java.util.Date;
  
 public class Event {
@@ -25,15 +26,6 @@ public class Event {
 	*/
 	public String GetId(){
 	return m_id;
-	}
-	
-	
-	/**
-	* get event Category
-	*@return Returns event Category
-	*/
-	public int GetCategory() {
-		return m_category;
 	}
 	
 	
@@ -124,22 +116,6 @@ public class Event {
 	*/
 	public void SetId(String id){
 		m_id = id;
-	}
-	
-	
-	/**
-	* set event Category
-	* @param category sets the new event Category
-	*/
-	public void SetCategory(int category) {
-		if (category <= m_maxCategory)
-			{
-				m_category = category;
-			}
-			else
-			{
-				System.out.println("category error!");
-			}
 	}
 	
 	
@@ -265,6 +241,10 @@ public class Event {
 	}
 	
 					
+	public Event(){
+		
+	}
+	
 	
 	/**
 	* creates an event object to hold the event data 
@@ -282,20 +262,12 @@ public class Event {
 	*@param description  set description 
 	*/
 
-	 public Event(String id,int category, String title, String location, 
-					String address, Date sDate,Date eDate,String sTime,String eTime,int repeat,String description)
+	 public Event(String id, String title, String location, 
+					String address, Date sDate,Date eDate,String sTime,
+					String eTime,int repeat,String description)
 					{
 					//Tests
 						m_id = id;
-						if (category <= m_maxCategory)
-							{
-							m_category = category;
-							}
-						else
-							{
-							System.out.println("category error!");
-							}
-							
 						if (title.length() <= m_maxTitle)
 							{
 							m_title = title;
@@ -350,15 +322,13 @@ public class Event {
 
 	
 	// varibles for testing
-	private int m_maxCategory = 10;
-	private int m_maxTitle = 30;
-	private int m_maxLocation = 30;
-	private int m_maxAddress = 30;
-	private int m_maxRepeat = 3;
-	private int m_maxDescription = 100;
+	private static final int m_maxTitle = 30;
+	private static final int m_maxLocation = 30;
+	private static final int m_maxAddress = 30;
+	private static final int m_maxRepeat = 3;
+	private static final int m_maxDescription = 100;
 
 	private String m_id;
-	private int m_category;
 	private String m_title;
 	private	String m_location;
 	private String m_address;
@@ -369,7 +339,7 @@ public class Event {
 	private int m_repeat;
 	private String m_description;
 	
-	// Test methord 
+	// Test method 
 	public static void main(String[] args)
 	{	
 		//sets a new start amd end date for the test event
@@ -377,16 +347,16 @@ public class Event {
 		Date eDate = new Date(07/8/12);
 		
 		//create new event
-		Event e = new Event("E1",2,"Tutor Meeting" ,"Farday Room","swansea uni",sDate,eDate
+		Event e = new Event("E1","Tutor Meeting" ,"Farday Room","swansea uni",
+				sDate,eDate
 							,"14:00","15:00",0,"Meet with tutor");
 
 		
-		//test accessor methords
+		//test accessor methos
 			System.out.println();
 			System.out.println("new EVENT");
 			System.out.println();
 			System.out.println(e.GetId());
-			System.out.println(e.GetCategory());
 			System.out.println(e.GetTitle());
 			System.out.println(e.GetLocation());
 			System.out.println(e.GetAddress());
@@ -397,11 +367,10 @@ public class Event {
 			System.out.println(e.GetRepeat());
 			System.out.println(e.GetDescription());
 		
-		//test Mutator methords
+		//test Mutator methors
 			sDate = new Date(05/2/13);
 		
 			e.SetId("E2");
-			e.SetCategory(3);
 			e.SetTitle("new title");
 			e.SetLocation("new location");
 			e.SetAddress("new Address");
@@ -416,7 +385,6 @@ public class Event {
 			System.out.println("new EVENT");
 			System.out.println();
 			System.out.println(e.GetId());
-			System.out.println(e.GetCategory());
 			System.out.println(e.GetTitle());
 			System.out.println(e.GetLocation());
 			System.out.println(e.GetAddress());

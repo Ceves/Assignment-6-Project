@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+@SuppressWarnings("serial")
 public class ContactGUI extends JFrame implements ActionListener {
 	
 	//symbolic constants

@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
+@SuppressWarnings("serial")
 public class ContactLabel extends JLabel implements MouseListener {
 	
 	private Contact m_contact;

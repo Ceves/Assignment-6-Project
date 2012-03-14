@@ -377,9 +377,11 @@ public class JFrame_Main extends JFrame {
 				"Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"
 			}
 		) {
+			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
 				String.class, String.class, String.class, String.class, String.class, String.class, String.class
 			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
@@ -431,7 +433,6 @@ public class JFrame_Main extends JFrame {
 				try {
 					ContactManager manager = new ContactManager();
 					manager.Load("CONTACTS.csv");
-					ContactGUI gui = new ContactGUI(manager);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -487,7 +488,7 @@ public class JFrame_Main extends JFrame {
 			Class[] columnTypes = new Class[] {
 				String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class
 			};
-			@SuppressWarnings("unchecked")
+			@SuppressWarnings({ "unchecked", "rawtypes" })
 			//New classes?
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];

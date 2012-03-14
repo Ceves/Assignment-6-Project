@@ -34,6 +34,7 @@ import javax.swing.DefaultComboBoxModel;
  * @author Alfei
  *
  */
+@SuppressWarnings("serial")
 public class JFrame_Events extends JFrame {
 
 	private JPanel contentPane;
@@ -77,6 +78,7 @@ public class JFrame_Events extends JFrame {
 	 * MASSIVE MASSIVE METHOD
 	 * WHAT THE HOLY HELL
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public JFrame_Events() {
 		setTitle("Events - Digital Organizer - | cs235group9a4 |");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Events.class.getResource("/javagui/resources/img_16x16/application_events_16x16.png")));
@@ -211,7 +213,12 @@ public class JFrame_Events extends JFrame {
 		        	global_events = efr.load("EVENTS.csv");
 		            Date sDate = df.parse(textStartDate.getText());
 		            Date eDate = df.parse(textEndDate.getText());
-		            Event myNewEvent = new Event("" + global_events.size() + "",comboBoxCategory.getSelectedIndex(), textTitle.getText(), textLocation.getText(), textAddress.getText(), sDate, eDate,textStartTime.getText(),textEndTime.getText(),comboBoxRepeat.getSelectedIndex(),textDescription.getText());
+		            Event myNewEvent = new Event("" + global_events.size() 
+		            		+ "", textTitle.getText(), textLocation.getText(), 
+		            		textAddress.getText(), sDate, eDate,
+		            		textStartTime.getText(),textEndTime.getText(),
+		            		comboBoxRepeat.getSelectedIndex(),
+		            		textDescription.getText());
 					global_events.add(myNewEvent);
 		        } catch (ParseException e) {
 		        	System.out.println("Invalid Date Format");
