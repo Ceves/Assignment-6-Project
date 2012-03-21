@@ -48,10 +48,12 @@ public class JFrame_Main extends JFrame {
 	private static ArrayList<Event> global_events = new ArrayList<Event>();
 	private static EventFileReader efr = new EventFileReader();
 	private static String[][] monthly_view_date_holder = new String[7][6];
+	private JButton btnAddEvent, btnAddTask, btnEditDelete, btnSearch;
 
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		try {
 			global_calendar = Calendar.getInstance();			
@@ -77,26 +79,26 @@ public class JFrame_Main extends JFrame {
 	}
 	
 	/**
-	 * Create the frame.
+	 * Create the frame. 
 	 */
 	@SuppressWarnings("serial")
 	public JFrame_Main() {
-		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Main.class.getResource("/resources/application_icon.png")));
 		setTitle("Digital Organizer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 50, 1000, 700);
 		
+		//Set the toolbar
+		System.setProperty("apple.laf.useScreenMenuBar", "true"); //Make it look good on macs
 		JMenuBar menuBar = new Toolbar();
 		setJMenuBar(menuBar);
-		
-		
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnAddEvent = new JButton("Add Event");
+		btnAddEvent = new JButton("Add Event");
+		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
 		btnAddEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFrame_Events form = new JFrame_Events();
@@ -104,22 +106,21 @@ public class JFrame_Main extends JFrame {
 		        System.out.println(tbl_monthly_view.getSelectedColumn() + " " + tbl_monthly_view.getSelectedRow());	        
 			}
 		});
-		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
 		
-		JButton btnAddTask = new JButton("Add Task");
+		btnAddTask = new JButton("Add Task");
 		btnAddTask.setEnabled(false);
 		btnAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_tasks_48x48.png")));
+		
+		btnEditDelete = new JButton("Edit/Delete");
+		btnEditDelete.setEnabled(false);
+		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
+		
+		btnSearch = new JButton("Search");
+		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
 		
 		JSeparator separator = new JSeparator();
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		
-		final JButton btnEditDelete = new JButton("Edit/Delete");
-		btnEditDelete.setEnabled(false);
-		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
-		
-		JButton btnSearch = new JButton("Search");
-		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -148,6 +149,8 @@ public class JFrame_Main extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
 		);
+		
+		
 		
 		final JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
 		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
