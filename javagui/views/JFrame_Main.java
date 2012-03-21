@@ -1,5 +1,6 @@
 package javagui.views;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -80,10 +81,11 @@ public class JFrame_Main extends JFrame {
 	 */
 	@SuppressWarnings("serial")
 	public JFrame_Main() {
+		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Main.class.getResource("/javagui/resources/application_icon.png")));
-		setTitle("Digital Organizer - | cs235group9a4 |");
+		setTitle("Digital Organizer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(50, 50, 1000, 650);
+		setBounds(50, 50, 1000, 700);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -239,6 +241,8 @@ public class JFrame_Main extends JFrame {
 			}
 		});
 		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_48x48/application_events_48x48.png")));
+		btnAddEvent.setMaximumSize(new Dimension(20,20));
+		btnAddEvent.setPreferredSize(new Dimension(20,20));
 		
 		JButton btnAddTask = new JButton("Add Task");
 		btnAddTask.setEnabled(false);
