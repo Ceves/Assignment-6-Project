@@ -9,8 +9,6 @@ import java.awt.Toolkit;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -33,7 +31,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import com.apple.eawt.*;
 
 public class JFrame_Main extends JFrame {
 
@@ -48,8 +45,25 @@ public class JFrame_Main extends JFrame {
 	private static ArrayList<Event> global_events = new ArrayList<Event>();
 	private static EventFileReader efr = new EventFileReader();
 	private static String[][] monthly_view_date_holder = new String[7][6];
-	private JButton btnAddEvent, btnAddTask, btnEditDelete, btnSearch;
 
+	private ActionListener listener;
+	
+	
+	//Declare all objects to be used in the main window
+	private JButton btnUseAlternativeAddress = 
+			new JButton("Use Alternative Address Book Manager");
+	private JScrollPane scrollPane = new JScrollPane();
+	private JLabel lblAddressBook = new JLabel("Address Book");
+	private JButton btnUpdatedeleteContact = new JButton(
+			"Update/Delete Contact");
+	private JButton btnAddContact = new JButton("Add Contact");
+	private JPanel AddressBook = new JPanel();
+	private JPanel dailyView = new JPanel();
+	private JPanel weeklyView = new JPanel();
+	private JButton btnAddEvent, btnAddTask, btnEditDelete, btnSearch;
+	
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -216,7 +230,6 @@ public class JFrame_Main extends JFrame {
 					.addContainerGap())
 		);
 		
-		tbl_monthly_view = new JTable();
 		tbl_monthly_view.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -275,41 +288,29 @@ public class JFrame_Main extends JFrame {
 		scrollPane_1.setViewportView(tbl_monthly_view);
 		monthlyView.setLayout(gl_monthlyView);
 		
-		JPanel weeklyView = new JPanel();
+		
 		Calendar.addTab("Weekly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_weekly_16x16.png")), weeklyView, null);
 		
-		JPanel dailyView = new JPanel();
+		
 		Calendar.addTab("Daily", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")), dailyView, null);
 		
-		JPanel AddressBook = new JPanel();
+		
 		tabbedPane.addTab("Address Book", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_address_book_16x16.png")), AddressBook, null);
 		
-		JButton btnAddContact = new JButton("Add Contact");
+		
 		btnAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_contact_48x48.png")));
 		
-		JButton btnUpdatedeleteContact = new JButton("Update/Delete Contact");
+		
 		btnUpdatedeleteContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
 		
-		JLabel lblAddressBook = new JLabel("Address Book");
+		
 		lblAddressBook.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblAddressBook.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_address_book_48x48.png")));
 		
-		JScrollPane scrollPane = new JScrollPane();
 		
-		JButton btnUseAlternativeAddress = new JButton("Use Alternative Address Book Manager");
-		btnUseAlternativeAddress.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					ContactManager manager = new ContactManager();
-					manager.Load("CONTACTS.csv");
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}});
+		
+		
+		btnUseAlternativeAddress.addActionListener(listener);
 		
 		GroupLayout gl_AddressBook = new GroupLayout(AddressBook);
 		gl_AddressBook.setHorizontalGroup(
@@ -343,7 +344,7 @@ public class JFrame_Main extends JFrame {
 					.addContainerGap())
 		);
 		
-		tbl_address_book = new JTable();
+		
 		scrollPane.setViewportView(tbl_address_book);
 		tbl_address_book.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -464,6 +465,17 @@ public class JFrame_Main extends JFrame {
 		}	
 	}
 	
+	public void actionPerformed(ActionEvent e){
+		if(e.getSource() == btnUseAlternativeAddress){
+			try {
+				ContactManager manager = new ContactManager();
+				manager.Load("CONTACTS.csv");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
 	
 	//+ month
 	public static void increment_month(){

@@ -6,6 +6,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 
+@SuppressWarnings("serial")
 public class Toolbar extends JMenuBar {
 
 	public Toolbar(){
