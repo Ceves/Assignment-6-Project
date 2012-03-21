@@ -36,23 +36,34 @@ public class JFrame_Main extends JFrame {
 	
 	//Declare all objects to be used in the main window
 	private static final long serialVersionUID = 1L;
+	
+	//panels
 	private JPanel contentPane = new JPanel();
-	private JTable tbl_address_book;
-	private static JTable tbl_monthly_view;
-	private JButton btnUseAlternativeAddress = 
-			new JButton("Use Alternative Address Book Manager");
-	private JScrollPane scrollPane = new JScrollPane();
-	private JLabel lblAddressBook = new JLabel("Address Book");
-	private JButton btnUpdatedeleteContact = new JButton(
-			"Update/Delete Contact");
-	private JButton btnAddContact = new JButton("Add Contact");
 	private JPanel AddressBook = new JPanel();
 	private JPanel dailyView = new JPanel();
 	private JPanel weeklyView = new JPanel();
+	private JPanel monthlyView = new JPanel();
+	
+	//Tables
+	private static JTable tbl_monthly_view;
+	private JTable tbl_address_book;
+	
+	//buttons
+	private JButton btnUseAlternativeAddress = 
+			new JButton("Use Alternative Address Book Manager");
+	private JButton btnUpdatedeleteContact = new JButton(
+			"Update/Delete Contact");
+	private JButton btnAddContact = new JButton("Add Contact");
 	private JButton btnAddEvent = new JButton("Add Event");;
 	private JButton btnEditDelete = new JButton("Edit/Delete");
+	
+	//Scroll Panes
+	private JScrollPane scrollPane = new JScrollPane();
+	
+	//JLabels
+	private JLabel lblAddressBook = new JLabel("Address Book");
 	private final JLabel lbl_month = new JLabel("Month YYYY");
-	private JPanel monthlyView = new JPanel();
+	
 	private JButton btnSearch = new JButton("Search");
 	private JButton btnAddTask = new JButton("Add Task");
 	private JSeparator separator = new JSeparator();

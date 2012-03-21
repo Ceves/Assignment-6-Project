@@ -369,10 +369,10 @@ public class Task {
      {
      //Tests
        this.m_id = m_id;
-       this.m_start_date = sDate;
-       this.m_due_date = dDate;
-       this.m_start_time = sTime;
-       this.m_due_time = dTime;
+       this.m_start_date = m_start_date;
+       this.m_due_date = m_due_date;
+       this.m_start_time = m_start_time;
+       this.m_due_time = m_due_time;
       
        try {
        if(ValidTitle(m_title)==true)
@@ -398,9 +398,10 @@ public class Task {
          
          
        }
-       
-       
      }
+       
+       
+     
 
 
  // Test method 
@@ -410,7 +411,8 @@ public class Task {
   Date dDate = new Date(07/8/12);
   
   //create new task
-  Task e = new Task("E1",2,"CS235 A4" ,"Farday Room",sDate,dDate,"14:00","15:00",0,"Hand in Assignment", m_description, m_description, m_description, m_category, m_description, m_category);
+  Task e = new Task("E1",2,"CS235 A4" ,"Farday Room",sDate,dDate,"14:00",
+		  "15:00",0,"Hand in Assignment", m_description, m_category);
 
   
   //test accessor methods
