@@ -363,10 +363,9 @@ public class Task {
      }
    return true;
   }
-  public Task(String id,int category, String title, String location, 
-		  Date sDate,Date dDate,String sTime,String dTime,int repeat,
-		  String m_id, String m_title, String m_location, 
-		  int m_repeat, String m_description, int m_category)
+  public Task(String m_id,int m_category, String m_title, 
+		 Date m_start_date, Date m_due_date, String m_start_time, String m_due_time,
+		  String m_location, int m_repeat, String m_description,)
      {
      //Tests
        this.m_id = m_id;
