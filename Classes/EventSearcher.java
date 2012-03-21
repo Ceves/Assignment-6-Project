@@ -1,22 +1,50 @@
 package Classes;
 
 import java.util.ArrayList;
-import java.lang.*;
 
+/**
+ * @file EventSearcher.java
+ * @author Adam Barrell
+ * 
+ * @brief This class finds and returns events that match
+ * a search criteria of type String.
+ * 
+ * EventSearcher contains methods which allow searches to
+ * be performed on a collection of Event objects and return
+ * a collection of events that meet a specified criteria.
+ */
 public class EventSearcher {
 	
 	public static final int MAX_LENGTH = 30;
+	public static final int MATCH_ANYWHERE = 0;
 	private EventFileReader m_reader;
 	private ArrayList<Event> m_eventArray;
 	
+	/**
+	 * The default constructor initialises the global
+	 * variables and loads the EVENTS.csv file into
+	 * an array list.
+	 */
 	public EventSearcher() {
 		m_reader = new EventFileReader();
 		m_eventArray = new ArrayList<Event>();
 		m_eventArray = m_reader.load("EVENTS.csv");
 	}
 	
+	/**
+	 * The FindByName method takes a String which will be matched
+	 * to a substrings of existing Events held in the collection
+	 * array. If an existing event's title is matched to the name
+	 * parameter, that event is added to an array list. A collection
+	 * of events which contain the substring are returned on completion.
+	 * 
+	 * @param name Title to match to existing events.
+	 * @return An array list of matching existing events.
+	 * @throws Exception Exception thrown if parameter is overloaded.
+	 */
 	public ArrayList<Event> FindByName(String name) throws Exception {
 		ArrayList<Event> events = new ArrayList<Event>();
+		name = name.toLowerCase();
 		
 		if (name.length() > MAX_LENGTH) {
 			throw new Exception("Error: The search criteria" +
@@ -25,8 +53,8 @@ public class EventSearcher {
 		}
 		
 		for(int i=0;i<m_eventArray.size();i++) {
-			String title = m_eventArray.get(i).GetTitle();
-			if(title.toLowerCase().indexOf(name.toLowerCase())>=0) {
+			String title = m_eventArray.get(i).GetTitle().toLowerCase();;
+			if(title.indexOf(name) >= MATCH_ANYWHERE) {
 				events.add(m_eventArray.get(i));
 			}
 		}
@@ -36,14 +64,29 @@ public class EventSearcher {
 	public static void main(String[] args) {
 		EventSearcher search = new EventSearcher();
 		ArrayList<Event> result = new ArrayList<Event>();
+		
+		/* Testing FindByName method */
+		
+		// Test overloading the String parameter
 		try {
-			result = search.FindByName("");
+			result = search.FindByName("iiiiiiiiiiiiiiiiii" +
+					"iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+			System.out.println("Fail: Parameter too long!");
 		} catch (Exception e) {
-			System.out.println("Error: "+e.getMessage());
+			System.out.println("Pass: "+e.getMessage());
 		}
+		
+		// Test regular String input
+		try {
+			result = search.FindByName("meeting");
+			System.out.println("Pass: Method returned successfully");
+		} catch (Exception e) {
+			System.out.println("Fail: "+e.getMessage());
+		}
+		
 		System.out.println("The results are: \n");
 		for(int i=0;i<result.size();i++) {
-			System.out.println(result.get(i).GetDescription());
+			System.out.println(result.get(i).GetTitle());
 		}
 	}
 
