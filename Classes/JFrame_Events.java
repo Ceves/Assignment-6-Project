@@ -78,7 +78,7 @@ public class JFrame_Events extends JFrame {
 	 * MASSIVE MASSIVE METHOD
 	 * WHAT THE HOLY HELL
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	
 	public JFrame_Events() {
 		setTitle("Events - Digital Organizer - | cs235group9a4 |");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Events.class.getResource("/javagui/resources/img_16x16/application_events_16x16.png")));

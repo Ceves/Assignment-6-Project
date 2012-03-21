@@ -45,11 +45,11 @@ public class EventFileReader {
 	*/
 	public void Save(ArrayList<Event> SEventArray, String m_SFileLocation)
 	{
-		this.FILE_LOCATION = m_SFileLocation;
+		EventFileReader.FILE_LOCATION = m_SFileLocation;
 
 		try
 		{
-			FileWriter writer = new FileWriter(this.FILE_LOCATION);
+			FileWriter writer = new FileWriter(EventFileReader.FILE_LOCATION);
 			for(int i = 0; i < SEventArray.size(); i++)
 			{
 				String id = SEventArray.get(i).GetId();

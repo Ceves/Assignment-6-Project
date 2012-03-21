@@ -1,7 +1,5 @@
 package Classes;
 
-import java.util.ArrayList;
-
 public class EventSearcher {
 	
 	public static final int MAX_LENGTH = 30;
