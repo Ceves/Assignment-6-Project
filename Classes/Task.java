@@ -1,4 +1,4 @@
-package javagui.views;
+package Classes;
 
 /**
  * The Task class is designed for folding Tasks.  It is accessible through constructors and mutator
@@ -10,19 +10,11 @@ package javagui.views;
  */
 
 
+import java.util.Calendar;
 import java.util.Date;
  
 public class Task {
  
- /**
-  * Initiate the variables associated with Tasks. 
-  */
-   private int m_maxCategory = 10;
-   private int m_maxTitle = 30;
-   private int m_maxLocation = 30;
-   private int m_maxRepeat = 3;
-   private int m_maxDescription = 100;
-  
    private String m_id;
    private String m_title;
    private String m_location;
@@ -278,8 +270,8 @@ public class Task {
 * @return True if valid
 */
 
- public boolean ValidLocation(Calendar location){
-  if (location.equals("")){
+ public boolean ValidLocation(String m_location2){
+  if (m_location2.equals("")){
    System.out.println("Please enter a valid location " +
                            "(1 or more characters)");
     return false;
@@ -289,11 +281,11 @@ public class Task {
  
  /**
 * Check valid Category
-* @param category
+* @param m_category2
 * @return True if valid
 */
- public boolean ValidCategory(Calendar category){
-   if (category.equals("")){
+ public boolean ValidCategory(int m_category2){
+   if (m_category2==0){
     System.out.println("Please enter a valid category " +
                              "(1 or more characters)");
     return false;
@@ -306,7 +298,7 @@ public class Task {
 * @param dob title
 * @return True if valid
 */
-  public boolean ValidTitle(Calendar title){
+  public boolean ValidTitle(String title){
     if (title.equals("")){
      System.out.println("Please enter a valid dob title" +
                 "(1 or more characters)");
@@ -321,7 +313,7 @@ public class Task {
 * @param start_time
 * @return True if valid
 */
-  public boolean ValidStartTime(Calendar start_time){
+  public boolean ValidStartTime(String start_time){
     if (start_time.equals("")){
      System.out.println("Please enter a valid start time " +
                  "(1 or more characters)");
@@ -335,7 +327,7 @@ public class Task {
 * @param due_time Due Time
 * @return True if valid
 */
-  public boolean ValidDueTime(Calendar due_time){
+  public boolean ValidDueTime(String due_time){
     if (due_time.equals("")){
        System.out.println("Please enter a valid due time " +
                 "(1 or more characters)");
@@ -349,7 +341,7 @@ public class Task {
 * @param description
 * @return True if valid
 */
-   public boolean ValidDescription(Calendar description){
+   public boolean ValidDescription(String description){
        if (description.equals("")){
              System.out.println("Please enter a valid description " +
                        "(1 or more characters)");
@@ -360,21 +352,23 @@ public class Task {
   
   /**
 * Check valid Repeat
-* @param repeat
+* @param m_repeat2
 * @return True if valid
 */
-   public boolean ValidRepeat(Calendar repeat){
-      if (repeat.equals("")){
+   public boolean ValidRepeat(int m_repeat2){
+      if (m_repeat2== 0){
        System.out.println("Please enter a valid repeat " +
                 "(1 or more characters)");
          return false;
      }
    return true;
   }
-  public Task(String id,int category, String title, String location, Date sDate,Date dDate,String sTime,String dTime,int repeat,String description)
+  public Task(String id,int category, String title, String location, 
+		  Date sDate,Date dDate,String sTime,String dTime,int repeat,
+		  String m_id, String m_title, String m_location, 
+		  int m_repeat, String m_description, int m_category)
      {
      //Tests
-       m_id = id;
        this.m_id = m_id;
        this.m_start_date = sDate;
        this.m_due_date = dDate;
@@ -417,7 +411,7 @@ public class Task {
   Date dDate = new Date(07/8/12);
   
   //create new task
-  Task e = new Task("E1",2,"CS235 A4" ,"Farday Room",sDate,dDate,"14:00","15:00",0,"Hand in Assignment");
+  Task e = new Task("E1",2,"CS235 A4" ,"Farday Room",sDate,dDate,"14:00","15:00",0,"Hand in Assignment", m_description, m_description, m_description, m_category, m_description, m_category);
 
   
   //test accessor methods
