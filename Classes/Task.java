@@ -4,13 +4,12 @@ package Classes;
  * The Task class is designed for folding Tasks.  It is accessible through constructors and mutator
  * it facilitates the creation, alteration and deletion of Tasks.
  * 
- * @author Devin Taylor
+ * @author Devin Taylor (& Adam Jama)
  * @date 27/02/12
  * 
  */
 
 
-import java.util.Calendar;
 import java.util.Date;
  
 public class Task {
@@ -364,8 +363,9 @@ public class Task {
    return true;
   }
   public Task(String m_id,int m_category, String m_title, 
-		 Date m_start_date, Date m_due_date, String m_start_time, String m_due_time,
-		  String m_location, int m_repeat, String m_description,)
+		 Date m_start_date, Date m_due_date, String m_start_time, 
+		 String m_due_time, String m_location, int m_repeat, 
+		 String m_description)
      {
      //Tests
        this.m_id = m_id;
@@ -411,8 +411,8 @@ public class Task {
   Date dDate = new Date(07/8/12);
   
   //create new task
-  Task e = new Task("E1",2,"CS235 A4" ,"Farday Room",sDate,dDate,"14:00",
-		  "15:00",0,"Hand in Assignment", m_description, m_category);
+  Task e = new Task("E1",2,"CS235 A4" ,sDate,dDate,"14:00",
+		  "15:00","Faraday k", 0,"Hand in Assignment");
 
   
   //test accessor methods
@@ -447,7 +447,7 @@ public class Task {
    e.SetDescription("new description");
    
    System.out.println(e.GetId() + " " + e.GetCategory() + " " + e.GetTitle() + " " +
-                      e.GetLocation + " " + e.GetSDate() + " " + e.GetDDate() + " " +
+                      e.GetLocation() + " " + e.GetSDate() + " " + e.GetDDate() + " " +
                       e.GetSTime() + " " + e.GetDTime() + " " + e.GetRepeat() + " " + e.GetDescription());
    
   

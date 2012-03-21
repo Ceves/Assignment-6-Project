@@ -36,10 +36,6 @@ public class JFrame_Main extends JFrame {
 	private JPanel weeklyView = new JPanel();
 	private MonthView monthlyView = new MonthView();
 	
-	//Tables
-	private static JTable tbl_monthly_view;
-	private JTable tbl_address_book;
-	
 	//buttons
 	private JButton btnUseAlternativeAddress = 
 			new JButton("Use Alternative Address Book Manager");
@@ -159,7 +155,6 @@ public class JFrame_Main extends JFrame {
 
 		monthlyView.refresh_monthly_view();
 		monthlyView.lbl_month.setText(monthlyView.monthToString());
-
 	}
 		
 	
