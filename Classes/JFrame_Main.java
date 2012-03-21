@@ -120,6 +120,7 @@ public class JFrame_Main extends JFrame {
 		        System.out.println(tbl_monthly_view.getSelectedColumn() + " " + tbl_monthly_view.getSelectedRow());	        
 			}
 		});
+		btnAddEvent.setBounds(10,10,10,10);
 		
 		btnAddTask = new JButton("Add Task");
 		btnAddTask.setEnabled(false);
@@ -134,41 +135,14 @@ public class JFrame_Main extends JFrame {
 		
 		JSeparator separator = new JSeparator();
 		
+		contentPane.add(btnAddEvent);
+		contentPane.add(btnAddTask);
+		contentPane.add(btnEditDelete);
+		contentPane.add(btnSearch);
+		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnAddEvent)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnAddTask)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnEditDelete)
-					.addPreferredGap(ComponentPlacement.RELATED, 472, Short.MAX_VALUE)
-					.addComponent(btnSearch))
-				.addComponent(separator, GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
-				.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
-		);
-		
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnAddEvent)
-							.addComponent(btnAddTask))
-						.addComponent(btnEditDelete)
-						.addComponent(btnSearch))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
-		);
-		
-		
-		
-		final JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
+		JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
 		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
 		
 		JPanel monthlyView = new JPanel();
@@ -383,7 +357,7 @@ public class JFrame_Main extends JFrame {
 		tbl_address_book.getColumnModel().getColumn(8).setResizable(false);
 		tbl_address_book.getTableHeader().setReorderingAllowed(false);
 		AddressBook.setLayout(gl_AddressBook);
-		contentPane.setLayout(gl_contentPane);
+		//contentPane.setLayout(gl_contentPane);
 		
 		refresh_monthly_view();
 		lbl_month.setText(monthToString());
