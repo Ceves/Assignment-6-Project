@@ -36,6 +36,9 @@ public class EventFileReader {
 	
 	}
 	
+	public ArrayList<Event> getEventArray() {
+		return m_eventArray;
+	}
 	
 	/**
 	* Saves the events in a Arraylist and save them to a file.
