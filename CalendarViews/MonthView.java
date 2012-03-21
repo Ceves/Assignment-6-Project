@@ -1,7 +1,7 @@
 /**
  * 
  */
-package javagui.views;
+package CalendarViews;
 
 /**
  * @author cs631989

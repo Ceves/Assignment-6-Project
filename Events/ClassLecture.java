@@ -5,13 +5,11 @@ package Events;
 
 import java.util.Date;
 
-import javagui.views.Event;
-
 /**
  * @author Alfei
  *
  */
-public class ClassLecture extends Event {
+public class ClassLecture extends Classes.Event {
 
 	protected String module;
 	/**

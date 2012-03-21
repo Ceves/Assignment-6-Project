@@ -5,13 +5,11 @@ package Events;
 
 import java.util.Date;
 
-import javagui.views.Event;
-
 /**
  * @author Alfei
  *
  */
-public class Accident extends Event {
+public class Accident extends Classes.Event {
 
 	protected String accidentType;
 

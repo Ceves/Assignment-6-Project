@@ -1,4 +1,4 @@
-package javagui.views;
+package Classes;
 
 import java.io.*;
 import java.util.StringTokenizer;

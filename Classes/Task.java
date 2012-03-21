@@ -1,4 +1,4 @@
-package javagui.views;
+package Classes;
 
 /**
  * The Task class is designed for folding Tasks.  It is accessible through constructors and mutator

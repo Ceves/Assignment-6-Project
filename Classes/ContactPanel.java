@@ -1,4 +1,4 @@
-package javagui.views;
+package Classes;
 /**
  * The ContactPanel class is largely an attempt to keep the GUI code as neat and understandable as possible.
  * This class is a subclass of JPanel that sets up all of the necessary components for the mutable contact view.

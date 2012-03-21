@@ -1,4 +1,4 @@
-package javagui.views;
+package Classes;
 /**
  * The ContactManager class handles all of the administration involved with the Digital Address Book,
  * such as adding, deleting, editing contacts and reading them in from and writing them to csv files.

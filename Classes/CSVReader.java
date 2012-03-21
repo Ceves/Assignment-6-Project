@@ -1,4 +1,4 @@
-package javagui.views;
+package Classes;
 
 /**
  Copyright 2005 Bytecode Pty Ltd.

@@ -6,13 +6,11 @@ package Events;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javagui.views.Event;
-
 /**
  * @author Alfei
  *
  */
-public class Anniversary extends Event {
+public class Anniversary extends Classes.Event {
 
 	ArrayList<String> anniversees;
 	/**

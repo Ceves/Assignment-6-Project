@@ -1,4 +1,4 @@
-package javagui.views;
+package Classes;
 
 /**
 * @ file EventManager

@@ -1,4 +1,4 @@
-package javagui.views;
+package Classes;
 
 /**
  * The ContactGUI class is a GUI for the admin involved with the contacts i.e. addition, deletion and

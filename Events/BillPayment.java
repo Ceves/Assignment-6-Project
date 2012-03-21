@@ -5,13 +5,11 @@ package Events;
 
 import java.util.Date;
 
-import javagui.views.Event;
-
 /**
  * @author Alfei
  *
  */
-public class BillPayment extends Event {
+public class BillPayment extends Classes.Event {
 
 	protected String company;
 	/**

@@ -5,13 +5,11 @@ package Events;
 
 import java.util.Date;
 
-import javagui.views.Event;
-
 /**
  * @author Alfei
  *
  */
-public class HappyHour extends Event {
+public class HappyHour extends Classes.Event {
 
 	/**
 	 * 

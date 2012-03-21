@@ -1,4 +1,4 @@
-package javagui.views;
+package Classes;
 /**
  * The ContactLabel class is a subclass of the JLabel class almost specifically designed to
  * hold a Contact variable as a way to solve the problem of having a dynamic amount of

@@ -5,13 +5,11 @@ package Events;
 
 import java.util.Date;
 
-import javagui.views.Event;
-
 /**
  * @author Alfei
  *
  */
-public class Concert extends Event {
+public class Concert extends Classes.Event {
 
 	public String bandName;
 	/**
