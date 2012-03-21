@@ -80,10 +80,11 @@ public class JFrame_Main extends JFrame {
 	 */
 	@SuppressWarnings("serial")
 	public JFrame_Main() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Main.class.getResource("/javagui/resources/application_icon.png")));
+		System.setProperty("apple.laf.useScreenMenuBar", "true");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Main.class.getResource("/resources/application_icon.png")));
 		setTitle("Digital Organizer - | cs235group9a4 |");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(50, 50, 1000, 650);
+		setBounds(50, 50, 1000, 700);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -100,16 +101,16 @@ public class JFrame_Main extends JFrame {
 		
 		JMenuItem mntmAddEvent = new JMenuItem("Add Event");
 		mnFile.add(mntmAddEvent);
-		mntmAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_events_16x16.png")));
+		mntmAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")));
 		
 		JMenuItem mntmAddTask = new JMenuItem("Add Task");
 		mntmAddTask.setEnabled(false);
 		mnFile.add(mntmAddTask);
-		mntmAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_tasks_16x16.png")));
+		mntmAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_tasks_16x16.png")));
 		
 		JMenuItem mntmAddContact = new JMenuItem("Add Contact");
 		mnFile.add(mntmAddContact);
-		mntmAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_contact_16x16.png")));
+		mntmAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_contact_16x16.png")));
 		
 		JSeparator separator_1 = new JSeparator();
 		mnFile.add(separator_1);
@@ -146,7 +147,7 @@ public class JFrame_Main extends JFrame {
 		
 		JSeparator separator_4 = new JSeparator();
 		mnFile.add(separator_4);
-		mntmExit.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_exit_16x16.png")));
+		mntmExit.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_exit_16x16.png")));
 		mnFile.add(mntmExit);
 		
 		JMenu mnEdit = new JMenu("Edit");
@@ -154,12 +155,12 @@ public class JFrame_Main extends JFrame {
 		
 		JMenuItem mntmUndo = new JMenuItem("Undo");
 		mntmUndo.setEnabled(false);
-		mntmUndo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_undo_16x16.png")));
+		mntmUndo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_undo_16x16.png")));
 		mnEdit.add(mntmUndo);
 		
 		JMenuItem mntmRedo = new JMenuItem("Redo");
 		mntmRedo.setEnabled(false);
-		mntmRedo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_redo_16x16.png")));
+		mntmRedo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_redo_16x16.png")));
 		mnEdit.add(mntmRedo);
 		
 		JSeparator separator_5 = new JSeparator();
@@ -181,16 +182,16 @@ public class JFrame_Main extends JFrame {
 		mnEdit.add(separator_6);
 		
 		JMenuItem mntmFindEvents = new JMenuItem("Find Events");
-		mntmFindEvents.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_events_16x16.png")));
+		mntmFindEvents.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")));
 		mnEdit.add(mntmFindEvents);
 		
 		JMenuItem mntmFindTasks = new JMenuItem("Find Tasks");
 		mntmFindTasks.setEnabled(false);
-		mntmFindTasks.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_tasks_16x16.png")));
+		mntmFindTasks.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_tasks_16x16.png")));
 		mnEdit.add(mntmFindTasks);
 		
 		JMenuItem mntmFindContact = new JMenuItem("Find Contact");
-		mntmFindContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_find_16x16.png")));
+		mntmFindContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_find_16x16.png")));
 		mnEdit.add(mntmFindContact);
 		
 		JMenu mnNewMenu = new JMenu("Views");
@@ -198,30 +199,30 @@ public class JFrame_Main extends JFrame {
 		
 		JMenuItem mntmDailyView = new JMenuItem("Daily View");
 		mntmDailyView.setEnabled(false);
-		mntmDailyView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_events_16x16.png")));
+		mntmDailyView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")));
 		mnNewMenu.add(mntmDailyView);
 		
 		JMenuItem mntmWeeklyView = new JMenuItem("Weekly View");
 		mntmWeeklyView.setEnabled(false);
-		mntmWeeklyView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_events_weekly_16x16.png")));
+		mntmWeeklyView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_weekly_16x16.png")));
 		mnNewMenu.add(mntmWeeklyView);
 		
 		JMenuItem mntmMonthlyView = new JMenuItem("Monthly View");
-		mntmMonthlyView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_events_monthly_16x16.png")));
+		mntmMonthlyView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_monthly_16x16.png")));
 		mnNewMenu.add(mntmMonthlyView);
 		
 		JSeparator separator_7 = new JSeparator();
 		mnNewMenu.add(separator_7);
 		
 		JMenuItem mntmAddressBookView = new JMenuItem("Address Book View");
-		mntmAddressBookView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_address_book_16x16.png")));
+		mntmAddressBookView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_address_book_16x16.png")));
 		mnNewMenu.add(mntmAddressBookView);
 		
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
 		
 		JMenuItem mntmHelpDocumentation = new JMenuItem("Help Contents");
-		mntmHelpDocumentation.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_help_16x16.png")));
+		mntmHelpDocumentation.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_help_16x16.png")));
 		mnHelp.add(mntmHelpDocumentation);
 		
 		JMenuItem mntmAbout = new JMenuItem("About Digital Organizer");
@@ -238,11 +239,11 @@ public class JFrame_Main extends JFrame {
 		        System.out.println(tbl_monthly_view.getSelectedColumn() + " " + tbl_monthly_view.getSelectedRow());	        
 			}
 		});
-		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_48x48/application_events_48x48.png")));
+		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
 		
 		JButton btnAddTask = new JButton("Add Task");
 		btnAddTask.setEnabled(false);
-		btnAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_48x48/application_tasks_48x48.png")));
+		btnAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_tasks_48x48.png")));
 		
 		JSeparator separator = new JSeparator();
 		
@@ -250,10 +251,10 @@ public class JFrame_Main extends JFrame {
 		
 		final JButton btnEditDelete = new JButton("Edit/Delete");
 		btnEditDelete.setEnabled(false);
-		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_48x48/application_rename_48x48.png")));
+		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
 		
 		JButton btnSearch = new JButton("Search");
-		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_48x48/application_search_48x48.png")));
+		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -284,16 +285,16 @@ public class JFrame_Main extends JFrame {
 		);
 		
 		final JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
-		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
+		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
 		
 		JPanel monthlyView = new JPanel();
-		Calendar.addTab("Monthly", new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_events_monthly_16x16.png")), monthlyView, null);
+		Calendar.addTab("Monthly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_monthly_16x16.png")), monthlyView, null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		
 		final JLabel lbl_month = new JLabel("Month YYYY");
 		lbl_month.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_month.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_48x48/application_events_monthly_48x48.png")));
+		lbl_month.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_monthly_48x48.png")));
 		
 		JButton btnNextmonth = new JButton("");
 		btnNextmonth.addActionListener(new ActionListener() {
@@ -302,7 +303,7 @@ public class JFrame_Main extends JFrame {
 				lbl_month.setText(monthToString());
 			}
 		});
-		btnNextmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_24x24/application_arrow_right_24x24.png")));
+		btnNextmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_24x24/application_arrow_right_24x24.png")));
 		
 		JButton btnPreviousmonth = new JButton("");
 		btnPreviousmonth.addActionListener(new ActionListener() {
@@ -311,7 +312,7 @@ public class JFrame_Main extends JFrame {
 				lbl_month.setText(monthToString());
 			}
 		});
-		btnPreviousmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_24x24/application_arrow_left_24x24.png")));
+		btnPreviousmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_24x24/application_arrow_left_24x24.png")));
 		GroupLayout gl_monthlyView = new GroupLayout(monthlyView);
 		gl_monthlyView.setHorizontalGroup(
 			gl_monthlyView.createParallelGroup(Alignment.LEADING)
@@ -405,23 +406,23 @@ public class JFrame_Main extends JFrame {
 		monthlyView.setLayout(gl_monthlyView);
 		
 		JPanel weeklyView = new JPanel();
-		Calendar.addTab("Weekly", new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_events_weekly_16x16.png")), weeklyView, null);
+		Calendar.addTab("Weekly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_weekly_16x16.png")), weeklyView, null);
 		
 		JPanel dailyView = new JPanel();
-		Calendar.addTab("Daily", new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_events_16x16.png")), dailyView, null);
+		Calendar.addTab("Daily", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")), dailyView, null);
 		
 		JPanel AddressBook = new JPanel();
-		tabbedPane.addTab("Address Book", new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_address_book_16x16.png")), AddressBook, null);
+		tabbedPane.addTab("Address Book", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_address_book_16x16.png")), AddressBook, null);
 		
 		JButton btnAddContact = new JButton("Add Contact");
-		btnAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_48x48/application_contact_48x48.png")));
+		btnAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_contact_48x48.png")));
 		
 		JButton btnUpdatedeleteContact = new JButton("Update/Delete Contact");
-		btnUpdatedeleteContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_48x48/application_rename_48x48.png")));
+		btnUpdatedeleteContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
 		
 		JLabel lblAddressBook = new JLabel("Address Book");
 		lblAddressBook.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblAddressBook.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_48x48/application_address_book_48x48.png")));
+		lblAddressBook.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_address_book_48x48.png")));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
