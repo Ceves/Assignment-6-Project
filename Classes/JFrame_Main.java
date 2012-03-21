@@ -1,5 +1,6 @@
 package Classes;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -31,6 +32,10 @@ import java.util.ListIterator;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
+
+import AddressBookViews.AddressBookView;
+import CalendarViews.MonthView;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -41,12 +46,7 @@ public class JFrame_Main extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable tbl_address_book;
-	private static JTable tbl_monthly_view;
-	private static Calendar global_calendar;
-	private static ArrayList<Event> global_events = new ArrayList<Event>();
 	private static EventFileReader efr = new EventFileReader();
-	private static String[][] monthly_view_date_holder = new String[7][6];
 
 	private ActionListener listener;
 	
@@ -54,19 +54,13 @@ public class JFrame_Main extends JFrame {
 	//Declare all objects to be used in the main window
 	private JButton btnUseAlternativeAddress = 
 			new JButton("Use Alternative Address Book Manager");
-	private JScrollPane scrollPane = new JScrollPane();
-	private JLabel lblAddressBook = new JLabel("Address Book");
-	private JButton btnUpdatedeleteContact = new JButton(
-			"Update/Delete Contact");
-	private JButton btnAddContact = new JButton("Add Contact");
-	private JPanel AddressBook = new JPanel();
+	private AddressBookView AddressBook = new AddressBookView();
 	private JPanel dailyView = new JPanel();
 	private JPanel weeklyView = new JPanel();
 	private JButton btnAddEvent, btnAddTask, btnEditDelete;
-	private final JLabel lbl_month = new JLabel("Month YYYY");
-	private JPanel monthlyView = new JPanel();
+	private MonthView monthlyView = new MonthView();
 	private JButton btnSearch = new JButton("Search");
-	private JSeparator separator = new JSeparator();
+	private JPanel topBar = new JPanel();
 	
 	
 	/**
@@ -75,8 +69,8 @@ public class JFrame_Main extends JFrame {
 
 	public static void main(String[] args) {
 		try {
-			global_calendar = Calendar.getInstance();			
-			global_events = efr.load("EVENTS.csv");//test Load()
+			//global_calendar = Calendar.getInstance();			
+			//global_events = efr.load("EVENTS.csv");//test Load()
 			
 			//m_manager = manager;
 			//m_contact = m_manager.GetContactList().get(0);
@@ -114,7 +108,14 @@ public class JFrame_Main extends JFrame {
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setPreferredSize(getSize());
 		setContentPane(contentPane);
+		
+		
+		
+		
+		topBar.setLocation(0, 0);
+		topBar.setPreferredSize(new Dimension(1000,70));
 		
 		btnAddEvent = new JButton("Add Event");
 		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
@@ -122,10 +123,9 @@ public class JFrame_Main extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				JFrame_Events form = new JFrame_Events();
 		        form.setVisible(true);
-		        System.out.println(tbl_monthly_view.getSelectedColumn() + " " + tbl_monthly_view.getSelectedRow());	        
+		        System.out.println(monthlyView.tbl_monthly_view.getSelectedColumn() + " " + monthlyView.tbl_monthly_view.getSelectedRow());	        
 			}
 		});
-		btnAddEvent.setBounds(10,10,10,10);
 		
 		btnAddTask = new JButton("Add Task");
 		btnAddTask.setEnabled(false);
@@ -138,312 +138,33 @@ public class JFrame_Main extends JFrame {
 		
 		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
 		
+		topBar.add(btnAddEvent);
+		topBar.add(btnAddTask);
+		topBar.add(btnEditDelete);
+		topBar.add(btnSearch);
 		
-		
-		contentPane.add(btnAddEvent);
-		contentPane.add(btnAddTask);
-		contentPane.add(btnEditDelete);
-		contentPane.add(btnSearch);
-		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		
-		JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
-		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
-		
-		
-		Calendar.addTab("Monthly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_monthly_16x16.png")), monthlyView, null);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		
-		
-		lbl_month.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_month.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_monthly_48x48.png")));
-		
-		JButton btnNextmonth = new JButton("");
-		btnNextmonth.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				increment_month();
-				lbl_month.setText(monthToString());
-			}
-		});
-		btnNextmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_24x24/application_arrow_right_24x24.png")));
-		
-		JButton btnPreviousmonth = new JButton("");
-		btnPreviousmonth.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				decrement_month();
-				lbl_month.setText(monthToString());
-			}
-		});
-		btnPreviousmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_24x24/application_arrow_left_24x24.png")));
-		GroupLayout gl_monthlyView = new GroupLayout(monthlyView);
-		gl_monthlyView.setHorizontalGroup(
-			gl_monthlyView.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_monthlyView.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_monthlyView.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
-						.addGroup(gl_monthlyView.createSequentialGroup()
-							.addComponent(lbl_month)
-							.addPreferredGap(ComponentPlacement.RELATED, 672, Short.MAX_VALUE)
-							.addComponent(btnPreviousmonth)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnNextmonth)))
-					.addContainerGap())
-		);
-		gl_monthlyView.setVerticalGroup(
-			gl_monthlyView.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_monthlyView.createSequentialGroup()
-					.addGroup(gl_monthlyView.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_monthlyView.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lbl_month)
-							.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
-						.addGroup(gl_monthlyView.createSequentialGroup()
-							.addGap(21)
-							.addGroup(gl_monthlyView.createParallelGroup(Alignment.TRAILING)
-								.addComponent(btnPreviousmonth)
-								.addComponent(btnNextmonth))
-							.addPreferredGap(ComponentPlacement.UNRELATED)))
-					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		tbl_monthly_view = new JTable();
-		tbl_monthly_view.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				btnEditDelete.setEnabled(false);
-				for (int d=0;d<7;d++) {
-				     for (int x=0;x<6;x++) {
-				    	 if ((x == tbl_monthly_view.getSelectedRow()) && (d == tbl_monthly_view.getSelectedColumn()) && (monthly_view_date_holder[d][x] != null)){
-				    		 btnEditDelete.setEnabled(true);
-				    	 System.out.println(monthly_view_date_holder[d][x]);
-				    	 }
-				     } 
-				}
+		contentPane.add(topBar);
 				
-			}
-		});
-		tbl_monthly_view.setColumnSelectionAllowed(true);
-		tbl_monthly_view.setCellSelectionEnabled(true);
-		tbl_monthly_view.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tbl_monthly_view.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"
-			}
-		) {
-			@SuppressWarnings("rawtypes")
-			Class[] columnTypes = new Class[] {
-				String.class, String.class, String.class, String.class, String.class, String.class, String.class
-			};
-			@SuppressWarnings({ "unchecked", "rawtypes" })
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		tbl_monthly_view.getColumnModel().getColumn(0).setResizable(false);
-		tbl_monthly_view.getColumnModel().getColumn(1).setResizable(false);
-		tbl_monthly_view.getColumnModel().getColumn(2).setResizable(false);
-		tbl_monthly_view.getColumnModel().getColumn(3).setResizable(false);
-		tbl_monthly_view.getColumnModel().getColumn(4).setResizable(false);
-		tbl_monthly_view.getColumnModel().getColumn(5).setResizable(false);
-		tbl_monthly_view.getColumnModel().getColumn(6).setResizable(false);
-		tbl_monthly_view.setRowHeight(59);
-		tbl_monthly_view.getTableHeader().setReorderingAllowed(false); 
-		scrollPane_1.setViewportView(tbl_monthly_view);
-		monthlyView.setLayout(gl_monthlyView);
-		
-		
+		JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
+		Calendar.addTab("Monthly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_monthly_16x16.png")), monthlyView, null);
 		Calendar.addTab("Weekly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_weekly_16x16.png")), weeklyView, null);
-		
-		
 		Calendar.addTab("Daily", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")), dailyView, null);
 		
-		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
 		tabbedPane.addTab("Address Book", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_address_book_16x16.png")), AddressBook, null);
+		tabbedPane.addTab("Task", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_tasks_16x16.png")), null, null);
+		
+		contentPane.add(tabbedPane);
 		
 		
-		btnAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_contact_48x48.png")));
-		
-		
-		btnUpdatedeleteContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
-		
-		
-		lblAddressBook.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblAddressBook.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_address_book_48x48.png")));
-		
-		
-		
-		
-		btnUseAlternativeAddress.addActionListener(listener);
-		
-		GroupLayout gl_AddressBook = new GroupLayout(AddressBook);
-		gl_AddressBook.setHorizontalGroup(
-			gl_AddressBook.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_AddressBook.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_AddressBook.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 949, Short.MAX_VALUE)
-						.addGroup(gl_AddressBook.createSequentialGroup()
-							.addComponent(lblAddressBook)
-							.addPreferredGap(ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
-							.addComponent(btnUseAlternativeAddress)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnAddContact)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnUpdatedeleteContact)))
-					.addContainerGap())
-		);
-		gl_AddressBook.setVerticalGroup(
-			gl_AddressBook.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_AddressBook.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_AddressBook.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_AddressBook.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnUpdatedeleteContact)
-							.addComponent(btnAddContact)
-							.addComponent(btnUseAlternativeAddress))
-						.addComponent(lblAddressBook))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		
-		
-		scrollPane.setViewportView(tbl_address_book);
-		tbl_address_book = new JTable();
-		tbl_address_book.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"First Name", "Surname", "Address", "Postcode", "Mobile No.", "Home No.", "Email", "Fax No.", "Website"
-			}
-		) {
-			@SuppressWarnings("rawtypes")
-			Class[] columnTypes = new Class[] {
-				String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class
-			};
-			@SuppressWarnings({ "unchecked", "rawtypes" })
-			//New classes?
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, false, false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		tbl_address_book.getColumnModel().getColumn(0).setResizable(false);
-		tbl_address_book.getColumnModel().getColumn(1).setResizable(false);
-		tbl_address_book.getColumnModel().getColumn(2).setResizable(false);
-		tbl_address_book.getColumnModel().getColumn(3).setResizable(false);
-		tbl_address_book.getColumnModel().getColumn(4).setResizable(false);
-		tbl_address_book.getColumnModel().getColumn(5).setResizable(false);
-		tbl_address_book.getColumnModel().getColumn(6).setResizable(false);
-		tbl_address_book.getColumnModel().getColumn(7).setResizable(false);
-		tbl_address_book.getColumnModel().getColumn(8).setResizable(false);
-		tbl_address_book.getTableHeader().setReorderingAllowed(false);
-		AddressBook.setLayout(gl_AddressBook);
-		//contentPane.setLayout(gl_contentPane);
-		
-		refresh_monthly_view();
-		lbl_month.setText(monthToString());
+
+		monthlyView.refresh_monthly_view();
+		monthlyView.lbl_month.setText(monthlyView.monthToString());
 
 	}
 		
-	//public toString override
-	public static String monthToString(){
-		String monthlyViewString;
-        switch (global_calendar.get(Calendar.MONTH)) {
-            case 0:  monthlyViewString = "January";
-                     break;
-            case 1:  monthlyViewString = "February";
-                     break;
-            case 2:  monthlyViewString = "March";
-                     break;
-            case 3:  monthlyViewString = "April";
-                     break;
-            case 4:  monthlyViewString = "May";
-                     break;
-            case 5:  monthlyViewString = "June";
-                     break;
-            case 6:  monthlyViewString = "July";
-                     break;
-            case 7:  monthlyViewString = "August";
-                     break;
-            case 8:  monthlyViewString = "September";
-                     break;
-            case 9: monthlyViewString = "October";
-                     break;
-            case 10: monthlyViewString = "November";
-                     break;
-            case 11: monthlyViewString = "December";
-                     break;
-            default: monthlyViewString = "Invalid month";
-                     break;
-        }
-        
-        monthlyViewString = (monthlyViewString + " " + global_calendar.get(Calendar.YEAR));
-        
-        return monthlyViewString;
-	}
 	
-	//refresh the monthly view
-	public static void refresh_monthly_view(){
-		global_events = efr.load("EVENTS.csv");//test Load()
-		Calendar local_calendar = global_calendar;
-		local_calendar.set(Calendar.DAY_OF_MONTH, 1);
-		int z = ((local_calendar.get(Calendar.DAY_OF_WEEK) * -1));
-		
-		for(int d = 0; d < 6; d++){
-			for (int i = 0; i < 7; i++){
-				tbl_monthly_view.getModel().setValueAt(null,d,i);
-			}
-		}		
-		
-		
-		for (int i = 0; i < 6; i++){
-			for (int d = 0; d < 7; d++){
-				z++;
-				if ((z >= 0) && (z <= (local_calendar.getActualMaximum(Calendar.DAY_OF_MONTH) - 1))) {
-					local_calendar.set(Calendar.DATE, z+1);
-					DateFormat df = new SimpleDateFormat("d/M/yy");
-					Date currentDate = (local_calendar.getTime());
-			        monthly_view_date_holder[d][i] = df.format(currentDate);
-		            tbl_monthly_view.getModel().setValueAt(local_calendar.get(Calendar.DAY_OF_MONTH),i,d);
-					ListIterator<Event> litr = global_events.listIterator();
-				    while (litr.hasNext()) {
-				      Event element = litr.next();
-				      SimpleDateFormat formatter = new SimpleDateFormat("d/M/yy");
-				      
-				      if ((formatter.format(element.GetSDate()).compareTo(df.format(currentDate))) == 0) {
-				    	  tbl_monthly_view.getModel().setValueAt(local_calendar.get(Calendar.DAY_OF_MONTH) + " - " + element.GetTitle(),i,d);
-				      };
-				      System.out.println();
-				    }				    
-				}
-			}
-		}	
-	}
 	
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource() == btnUseAlternativeAddress){
@@ -457,19 +178,5 @@ public class JFrame_Main extends JFrame {
 		}
 	}
 	
-	//+ month
-	public static void increment_month(){
-		int month = global_calendar.get(Calendar.MONTH);
-		month = month + 1;
-		global_calendar.set(Calendar.MONTH, month);
-		refresh_monthly_view();
-	}
 	
-	//- month
-	public static void decrement_month(){
-		int month = global_calendar.get(Calendar.MONTH);
-		month = month - 1;
-		global_calendar.set(Calendar.MONTH, month);
-		refresh_monthly_view();
-	}
 }
