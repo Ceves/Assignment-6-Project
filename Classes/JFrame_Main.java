@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -60,8 +62,11 @@ public class JFrame_Main extends JFrame {
 	private JPanel AddressBook = new JPanel();
 	private JPanel dailyView = new JPanel();
 	private JPanel weeklyView = new JPanel();
-	private JButton btnAddEvent, btnAddTask, btnEditDelete, btnSearch;
-	
+	private JButton btnAddEvent, btnAddTask, btnEditDelete;
+	private final JLabel lbl_month = new JLabel("Month YYYY");
+	private JPanel monthlyView = new JPanel();
+	private JButton btnSearch = new JButton("Search");
+	private JSeparator separator = new JSeparator();
 	
 	
 	/**
@@ -129,10 +134,10 @@ public class JFrame_Main extends JFrame {
 		btnEditDelete.setEnabled(false);
 		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
 		
-		btnSearch = new JButton("Search");
+		
 		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
 		
-		JSeparator separator = new JSeparator();
+		
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -169,12 +174,12 @@ public class JFrame_Main extends JFrame {
 		final JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
 		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
 		
-		JPanel monthlyView = new JPanel();
+		
 		Calendar.addTab("Monthly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_monthly_16x16.png")), monthlyView, null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		
-		final JLabel lbl_month = new JLabel("Month YYYY");
+		
 		lbl_month.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lbl_month.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_monthly_48x48.png")));
 		
@@ -227,7 +232,7 @@ public class JFrame_Main extends JFrame {
 					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
-		
+		tbl_monthly_view = new JTable();
 		tbl_monthly_view.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -344,6 +349,7 @@ public class JFrame_Main extends JFrame {
 		
 		
 		scrollPane.setViewportView(tbl_address_book);
+		tbl_address_book = new JTable();
 		tbl_address_book.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null, null, null, null, null},
