@@ -10,248 +10,242 @@ package Classes;
  */
 
 
+import java.util.Calendar;
 import java.util.Date;
  
 public class Task {
  
- /**
-  * Initiate the variables associated with Tasks. 
-  */
-   private int m_maxCategory = 10;
-   private int m_maxTitle = 30;
-   private int m_maxLocation = 30;
-   private int m_maxRepeat = 3;
-   private int m_maxDescription = 100;
-  
-  private String m_id;
-  private String m_title;
-  private String m_location;
-  private int m_category;
-  private Date m_start_date;
-  private Date m_due_date;
-  private String m_start_time;
-  private String m_due_time;
-  private int m_repeat;
-  private String m_description;
+   private String m_id;
+   private String m_title;
+   private String m_location;
+   private int m_category;
+   private Date m_start_date;
+   private Date m_due_date;
+   private String m_start_time;
+   private String m_due_time;
+   private int m_repeat;
+   private String m_description;
 
  // Setup Accessors
- /**get task id
- *
- *@\return task id 
+ 
+ /**
+ *This gets the ID for the contact
+ *@return ID
  */
- public String GetId()
- {
- return m_id;
- }
- /**get task Category
- *
- *@\return task Category
+   public String GetId() {
+ 
+   return m_id;
+ 
+   }
+ 
+ /**
+ *This gets the Category of the task
+ *@return task Category
  */
- public int GetCategory()
- {
+  public int GetCategory() {
+  
   return m_category;
- }
  
- /**get task title
- *
- *@\return task title
+  }
+ 
+ /**
+ *This gets the Title of the Task
+ *@return task Title
  */
- public String GetTitle()
- {
+  public String GetTitle() {
+  
   return m_title;
- }
  
- /**get task Location
- *
- *@\return task Location
+  } 
+ 
+ /**
+  * This gets the Location of the task
+  *@return task Location
  */
- public String GetLocation()
- {
+  public String GetLocation() {
+  
   return m_location;
- }
  
- /**get task Start Date
- *
- *@\return task Start Date
+  }
+ 
+ /**
+  * gets the Start Date of task
+  *@return task Start Date
  */
- public Date GetSDate()
- {
+  public Date GetSDate() {
+  
   return m_start_date;
- }
  
- /**get task End Date
- *
- *@\return task End Date
+ 
+  }
+ 
+ /**
+ *gets task End Date
+ *@return task End Date
  */
- public Date GetDDate()
- {
+  public Date GetDDate() {
+  
   return m_due_date;
- }
  
- /**get task Start Time
- *
- *@\return task Start Time
+ 
+  }
+ 
+ /**
+ * get task Start Time
+ *@return task Start Time
  */
- public String GetSTime()
- {
+  public String GetSTime() {
+  
   return m_start_time;
- }
+ 
+  }
  
  /**get task End Time
  *
  *@\return task End Time
  */
- public String GetDTime()
- {
+  public String GetDTime() {
+  
   return m_due_time;
- }
  
- /**get task Repeat value
- *
- *@\return task Repeat value
+  }
+ 
+ /**
+ *task Repeat value
+ *@return task Repeat value
  */
- public int GetRepeat()
- {
+  public int GetRepeat() {
+  
   return m_repeat;
- }
  
- /**get task Description
- *
- *@\return task Description
+ 
+  }
+ 
+ /**
+ *get task Description
+ *@return task Description
  */
- public String GetDescription()
- {
+  public String GetDescription() {
+  
   return m_description;
- }
+ 
+ 
+  }
  
  
  // Setup Mutators
  
- /**set task id
- *
- *@\param new task id
+ /**
+ *set task id
+ *@param id
  */
  
- public void SetId(String id)
- {
+  public void SetId(String id) {
+  
   m_id = id;
- }
  
- /**set task Category
- *
- *@\param new task Category
+ 
+  }
+ 
+ /**
+ *set task Category
+ *@param category
  */
- public void SetCategory(int category)
- {
-  if (category <= m_maxCategory)
-   {
-    m_category = category;
-   }
-   else
-   {
-    System.out.println("category out of range");
-   }
- }
+  public void SetCategory(int category) {
+    
+  m_category = category;
+   
+   
+  }
  
- /**set task title
- *
+ /**
+ * set task title
  *@\param new task title
  */
- public void SetTitle(String title)
- {
-  if (title.length() <= m_maxTitle)
-   {
-    m_title = title;
-   }
-   else
-   {
-    System.out.println("title out of range");
-   }
- }
+  public void SetTitle(String title) {
  
- /**set task location
- *
+  m_title = title;
+   
+   
+  }
+   
+ 
+ /**
+ * set task location
  *@\param new task location
  */
- public void SetLocation(String location)
- {
-  if (location.length() <= m_maxLocation)
-   {
-    m_location = location;
-   }
-   else
-   {
-    System.out.println("location out of range");
-   }
- }
+  public void SetLocation(String location) { 
+  
+  m_location = location;
+  
+  }
  
- /**set task start date
- *
+ /**
+ * set task start date
  *@\param new task start date
  */
- public void SetSDate(Date sDate)
- {
+  public void SetSDate(Date sDate) {
+  
   m_start_date = sDate;
- }
  
- /**set task end date
- *
- *@\param new task end date
+ 
+  }
+ 
+ /**
+ * set task end date
+ *@param new task end date
  */
- public void SetEDate(Date eDate)
- {
+  public void SetEDate(Date eDate) {
+  
   m_due_date = eDate;
- }
+ 
+ 
+  }
  
  /**set task start Time
  *
- *@\param new task Start Time
+ *@param new task Start Time
  */
- public void SetSTime(String sTime)
- {
+  public void SetSTime(String sTime) {
+  
   m_start_time = sTime;
- }
+ 
+ 
+  }
  
  /**set task End Time 
  *
- *@\param new task End Time
+ *@param new task End Time
  */
- public void SetDTime(String eTime)
- {
+  public void SetDTime(String eTime) {
+  
   m_due_time = eTime;
- }
  
- /**set task repeat value
- *
- *@\param new task repeat value
- */
- public void SetRepeat(int repeat)
- {
-  if (repeat <= m_maxRepeat)
-   {
-    m_repeat = repeat;
-   }
-    else
-   {
-    System.out.println("reeat our of range");
-   }
- }
  
- /**set task descripion 
- *
- *@\param new task description
+  }
+ 
+ /**
+ * set task repeat value
+ *@param new task repeat value
  */
- public void SetDescription(String description)
- {
-  if (description.length() <= m_maxDescription)
-   {
-    m_description = description;
-   }
-    else
-   {
-    System.out.println("description out of range");
-   }
- }
+  public void SetRepeat(int repeat) {
+
+  m_repeat = repeat;
+   
+   
+  }
+  
+ 
+ /**
+ *set task descripion 
+ *@param new task description
+ */
+  public void SetDescription(String description) {
+ 
+  m_description = description;
+ 
+ 
+  }
  
  
      
@@ -270,59 +264,145 @@ public class Task {
  *@\param set task description 
  */
 
-  public Task(String id,int category, String title, String location, Date sDate,Date dDate,String sTime,String dTime,int repeat,String description)
+/**
+* Check valid Location
+* @param dob location
+* @return True if valid
+*/
+
+ public boolean ValidLocation(String m_location2){
+  if (m_location2.equals("")){
+   System.out.println("Please enter a valid location " +
+                           "(1 or more characters)");
+    return false;
+   }
+  return true;
+ }
+ 
+ /**
+* Check valid Category
+* @param m_category2
+* @return True if valid
+*/
+ public boolean ValidCategory(int m_category2){
+   if (m_category2==0){
+    System.out.println("Please enter a valid category " +
+                             "(1 or more characters)");
+    return false;
+   }
+  return true;
+  }
+  
+  /**
+* Check valid Title
+* @param dob title
+* @return True if valid
+*/
+  public boolean ValidTitle(String title){
+    if (title.equals("")){
+     System.out.println("Please enter a valid dob title" +
+                "(1 or more characters)");
+     return false;
+   }
+  return true;
+ }
+ 
+ 
+  /**
+* Check valid Start Time
+* @param start_time
+* @return True if valid
+*/
+  public boolean ValidStartTime(String start_time){
+    if (start_time.equals("")){
+     System.out.println("Please enter a valid start time " +
+                 "(1 or more characters)");
+          return false;
+     }
+   return true;
+  }
+  
+  /**
+* Check valid Due Time
+* @param due_time Due Time
+* @return True if valid
+*/
+  public boolean ValidDueTime(String due_time){
+    if (due_time.equals("")){
+       System.out.println("Please enter a valid due time " +
+                "(1 or more characters)");
+           return false;
+        }
+    return true;
+   }
+   
+   /**
+* Check valid Description
+* @param description
+* @return True if valid
+*/
+   public boolean ValidDescription(String description){
+       if (description.equals("")){
+             System.out.println("Please enter a valid description " +
+                       "(1 or more characters)");
+               return false;
+         }
+       return true;
+   }
+  
+  /**
+* Check valid Repeat
+* @param m_repeat2
+* @return True if valid
+*/
+   public boolean ValidRepeat(int m_repeat2){
+      if (m_repeat2== 0){
+       System.out.println("Please enter a valid repeat " +
+                "(1 or more characters)");
+         return false;
+     }
+   return true;
+  }
+  public Task(String m_id,int m_category, String m_title, 
+		 Date m_start_date, Date m_due_date, String m_start_time, String m_due_time,
+		  String m_location, int m_repeat, String m_description,)
      {
      //Tests
-      m_id = id;
-      if (category <= m_maxCategory)
-       {
-       m_category = category;
-       }
-      else
-       {
-       System.out.println("category error!");
-       }
-       
-      if (title.length() <= m_maxTitle)
-       {
-       m_title = title;
-       }
-      else
-       {
-       System.out.println("Title error!");
-       }
-       
-      if (location.length() <= m_maxLocation)
-       {
-       m_location = location;
-       }
-      else
-       {
-       System.out.println("location error!");
-       }
-            
-      if (repeat <= m_maxRepeat)
-       {
-       m_repeat = repeat;
-       }
-      else
-       {
-       System.out.println("Repeat error!");
+       this.m_id = m_id;
+       this.m_start_date = sDate;
+       this.m_due_date = dDate;
+       this.m_start_time = sTime;
+       this.m_due_time = dTime;
+      
+       try {
+       if(ValidTitle(m_title)==true)
+       this.m_title = m_title;
+       else
+       throw new Exception();
+       if (ValidLocation(m_location) == true)
+       this.m_location = m_location;
+       else
+       throw new Exception();
+       if (ValidRepeat(m_repeat)==true)
+       this.m_repeat = m_repeat;
+       else
+       throw new Exception();
+       if (ValidDescription(m_description)==true)
+       this.m_description = m_description;
+       else
+       throw new Exception();
+       if (ValidCategory(m_category)==true)
+       this.m_category = m_category;
+       } catch (Exception e) {
+       e.printStackTrace();
+         
+         
        }
        
-      if (description.length() <= m_maxDescription)
-       {
-       m_description = description;
-       }
-      else
-       {
-       System.out.println("description error!");
-       }
-      m_start_date = sDate;
-      m_due_date = dDate;
-      m_start_time = sTime;
-      m_due_time = dTime;
-     } 
+       
+     }
+
+
  // Test method 
  public static void main(String[] args)
  {
@@ -330,7 +410,7 @@ public class Task {
   Date dDate = new Date(07/8/12);
   
   //create new task
-  Task e = new Task("E1",2,"CS235 A4" ,"Farday Room",sDate,dDate,"14:00","15:00",0,"Hand in Assignment");
+  Task e = new Task("E1",2,"CS235 A4" ,"Farday Room",sDate,dDate,"14:00","15:00",0,"Hand in Assignment", m_description, m_description, m_description, m_category, m_description, m_category);
 
   
   //test accessor methods
@@ -364,25 +444,13 @@ public class Task {
    e.SetRepeat(5);
    e.SetDescription("new description");
    
-   System.out.println();
-   System.out.println("New Task");
-   System.out.println();
-   System.out.println(e.GetId());
-   System.out.println(e.GetCategory());
-   System.out.println(e.GetTitle());
-   System.out.println(e.GetLocation());
-   System.out.println(e.GetSDate());
-   System.out.println(e.GetDDate());
-   System.out.println(e.GetSTime());
-   System.out.println(e.GetDTime());
-   System.out.println(e.GetRepeat());
-   System.out.println(e.GetDescription());
+   System.out.println(e.GetId() + " " + e.GetCategory() + " " + e.GetTitle() + " " +
+                      e.GetLocation + " " + e.GetSDate() + " " + e.GetDDate() + " " +
+                      e.GetSTime() + " " + e.GetDTime() + " " + e.GetRepeat() + " " + e.GetDescription());
+   
   
   
  
  }
 
  }
-
-
- 
