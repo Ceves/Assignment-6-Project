@@ -121,6 +121,7 @@ public class JFrame_Main extends JFrame {
 		JSeparator separator = new JSeparator();
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -135,6 +136,7 @@ public class JFrame_Main extends JFrame {
 				.addComponent(separator, GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
 				.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
 		);
+		
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
