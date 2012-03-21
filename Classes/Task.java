@@ -444,19 +444,10 @@ public class Task {
    e.SetRepeat(5);
    e.SetDescription("new description");
    
-   System.out.println();
-   System.out.println("New Task");
-   System.out.println();
-   System.out.println(e.GetId());
-   System.out.println(e.GetCategory());
-   System.out.println(e.GetTitle());
-   System.out.println(e.GetLocation());
-   System.out.println(e.GetSDate());
-   System.out.println(e.GetDDate());
-   System.out.println(e.GetSTime());
-   System.out.println(e.GetDTime());
-   System.out.println(e.GetRepeat());
-   System.out.println(e.GetDescription());
+   System.out.println(e.GetId() + " " + e.GetCategory() + " " + e.GetTitle() + " " +
+                      e.GetLocation + " " + e.GetSDate() + " " + e.GetDDate() + " " +
+                      e.GetSTime() + " " + e.GetDTime() + " " + e.GetRepeat() + " " + e.GetDescription());
+   
   
   
  
