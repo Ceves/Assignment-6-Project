@@ -35,6 +35,7 @@ import Classes.JFrame_Main;
  * @author cs631989
  *
  */
+@SuppressWarnings("serial")
 public class MonthView extends JPanel{
 
 	public static JTable tbl_monthly_view;

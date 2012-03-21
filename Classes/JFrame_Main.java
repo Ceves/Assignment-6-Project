@@ -9,12 +9,9 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
@@ -27,7 +24,6 @@ public class JFrame_Main extends JFrame {
 	/**
 	 * THIS IS THE MAIN APPLICATION
 	 */
-	//Declare all objects to be used in the main window
 	
 	//panels
 	private JPanel contentPane = new JPanel();
@@ -39,23 +35,11 @@ public class JFrame_Main extends JFrame {
 	//buttons
 	private JButton btnUseAlternativeAddress = 
 			new JButton("Use Alternative Address Book Manager");
-	private JButton btnUpdatedeleteContact = new JButton(
-			"Update/Delete Contact");
-	private JButton btnAddContact = new JButton("Add Contact");
 	private JButton btnAddEvent = new JButton("Add Event");;
 	private JButton btnEditDelete = new JButton("Edit/Delete");
 	private JButton btnAddTask;
-	
-	//Scroll Panes
-	private JScrollPane scrollPane = new JScrollPane();
-	
-	//JLabels
-	private JLabel lblAddressBook = new JLabel("Address Book");
-	private final JLabel lbl_month = new JLabel("Month YYYY");
-	
 	private JButton btnSearch = new JButton("Search");
 	private JPanel topBar = new JPanel();
-	
 	
 	/**
 	 * Launch the application.
@@ -88,7 +72,6 @@ public class JFrame_Main extends JFrame {
 	/**
 	 * Create the frame. 
 	 */
-	@SuppressWarnings("serial")
 	public JFrame_Main() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Main.class.getResource("/resources/application_icon.png")));
 		setTitle("Digital Organizer");
@@ -115,9 +98,9 @@ public class JFrame_Main extends JFrame {
 		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
 		btnAddEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JFrame_Events form = new JFrame_Events();
+				AddEventWindow form = new AddEventWindow();
 		        form.setVisible(true);
-		        System.out.println(monthlyView.tbl_monthly_view.getSelectedColumn() + " " + monthlyView.tbl_monthly_view.getSelectedRow());	        
+		        System.out.println(MonthView.tbl_monthly_view.getSelectedColumn() + " " + MonthView.tbl_monthly_view.getSelectedRow());	        
 			}
 		});
 		
@@ -153,8 +136,8 @@ public class JFrame_Main extends JFrame {
 		
 		
 
-		monthlyView.refresh_monthly_view();
-		monthlyView.lbl_month.setText(monthlyView.monthToString());
+		MonthView.refresh_monthly_view();
+		monthlyView.lbl_month.setText(MonthView.monthToString());
 	}
 		
 	

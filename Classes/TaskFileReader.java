@@ -207,7 +207,8 @@ catch(IOException e)
   
   String description = m_dataArray.get(i);
  
-  Task task = new Task(id,category,title,location,sDate,eDate,sTime,eTime,repeat,description, description, description, repeat, description, repeat);
+  Task task = new Task(id,category,title,sDate,eDate,sTime,
+		  eTime,description, repeat, description);
   
   m_taskArray.add(task);
  

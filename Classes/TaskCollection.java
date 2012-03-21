@@ -1,4 +1,4 @@
-package calendar;
+package Classes;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -143,8 +143,7 @@ public class TaskCollection extends Collection<Task> {
     
      /* Test GetTaskByDay(date) */
      try {
-collection.Add(new Task(1, "Start Project", calStart, calEnd,
-"Project Deadline", 0));
+collection.Add(new Task());
 } catch (Exception e) {
 System.out.println(e.getMessage());
 }
