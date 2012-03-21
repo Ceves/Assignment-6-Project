@@ -1,5 +1,6 @@
 package Classes;
 
+import java.util.*;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,11 +22,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.ListIterator;
-
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
@@ -37,19 +33,12 @@ public class JFrame_Main extends JFrame {
 	/**
 	 * THIS IS THE MAIN APPLICATION
 	 */
+	
+	//Declare all objects to be used in the main window
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane = new JPanel();
 	private JTable tbl_address_book;
 	private static JTable tbl_monthly_view;
-	private static Calendar global_calendar;
-	private static ArrayList<Event> global_events = new ArrayList<Event>();
-	private static EventFileReader efr = new EventFileReader();
-	private static String[][] monthly_view_date_holder = new String[7][6];
-
-	private ActionListener listener;
-	
-	
-	//Declare all objects to be used in the main window
 	private JButton btnUseAlternativeAddress = 
 			new JButton("Use Alternative Address Book Manager");
 	private JScrollPane scrollPane = new JScrollPane();
@@ -68,11 +57,19 @@ public class JFrame_Main extends JFrame {
 	private JButton btnAddTask = new JButton("Add Task");
 	private JSeparator separator = new JSeparator();
 	
+	//declare data structures
+	private static Calendar global_calendar;
+	private static ArrayList<Event> global_events = new ArrayList<Event>();
+	private static EventFileReader efr = new EventFileReader();
+	private static String[][] monthly_view_date_holder = new String[7][6];
+
+	//declare action listener
+	private ActionListener listener;
+	
 	
 	/**
 	 * Launch the application.
 	 */
-
 	public static void main(String[] args) {
 		try {
 			global_calendar = Calendar.getInstance();			
@@ -102,38 +99,45 @@ public class JFrame_Main extends JFrame {
 	 */
 	@SuppressWarnings("serial")
 	public JFrame_Main() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Main.class.getResource("/resources/application_icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Main.class.
+				getResource("/resources/application_icon.png")));
 		setTitle("Digital Organizer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 50, 1000, 700);
 		
 		//Set the toolbar
-		System.setProperty("apple.laf.useScreenMenuBar", "true"); //Make it look good on macs
+		System.setProperty("apple.laf.useScreenMenuBar", 
+				"true"); //Make it look good on macs
 		JMenuBar menuBar = new Toolbar();
 		setJMenuBar(menuBar);
 		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
+		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource(
+				"/resources/img_48x48/application_events_48x48.png")));
 		btnAddEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFrame_Events form = new JFrame_Events();
 		        form.setVisible(true);
-		        System.out.println(tbl_monthly_view.getSelectedColumn() + " " + tbl_monthly_view.getSelectedRow());	        
+		        System.out.println(tbl_monthly_view.getSelectedColumn() + " " 
+		        + tbl_monthly_view.getSelectedRow());	        
 			}
 		});
 		
 		
 		btnAddTask.setEnabled(false);
-		btnAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_tasks_48x48.png")));
+		btnAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource(
+				"/resources/img_48x48/application_tasks_48x48.png")));
 		
 		
 		btnEditDelete.setEnabled(false);
-		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
+		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource(
+				"/resources/img_48x48/application_rename_48x48.png")));
 		
 		
-		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
+		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource(
+				"/resources/img_48x48/application_search_48x48.png")));
 		
 		
 		
@@ -147,39 +151,52 @@ public class JFrame_Main extends JFrame {
 					.addComponent(btnAddTask)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnEditDelete)
-					.addPreferredGap(ComponentPlacement.RELATED, 472, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 472, 
+							Short.MAX_VALUE)
 					.addComponent(btnSearch))
-				.addComponent(separator, GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
-				.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
+				.addComponent(separator, GroupLayout.DEFAULT_SIZE, 974, 
+						Short.MAX_VALUE)
+				.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 974, 
+						Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.
+							LEADING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.
+								BASELINE)
 							.addComponent(btnAddEvent)
 							.addComponent(btnAddTask))
 						.addComponent(btnEditDelete)
 						.addComponent(btnSearch))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
+					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 2, 
+							GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
+					.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 510, 
+							Short.MAX_VALUE))
 		);
 		
 		
 		
 		final JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
-		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
+		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.
+				getResource("/resources/img_16x16/application_icon_16x16.png")), 
+				Calendar, null);
 		
 		
-		Calendar.addTab("Monthly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_monthly_16x16.png")), monthlyView, null);
+		Calendar.addTab("Monthly", new ImageIcon(JFrame_Main.class.
+				getResource("/resources/img_16x16/" +
+						"application_events_monthly_16x16.png")), 
+						monthlyView, null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		
 		
 		lbl_month.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl_month.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_monthly_48x48.png")));
+		lbl_month.setIcon(new ImageIcon(JFrame_Main.class.getResource(
+				"/resources/img_48x48/application_events_monthly_48x48.png")));
 		
 		JButton btnNextmonth = new JButton("");
 		btnNextmonth.addActionListener(new ActionListener() {
@@ -188,7 +205,8 @@ public class JFrame_Main extends JFrame {
 				lbl_month.setText(monthToString());
 			}
 		});
-		btnNextmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_24x24/application_arrow_right_24x24.png")));
+		btnNextmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource(
+				"/resources/img_24x24/application_arrow_right_24x24.png")));
 		
 		JButton btnPreviousmonth = new JButton("");
 		btnPreviousmonth.addActionListener(new ActionListener() {
@@ -197,17 +215,21 @@ public class JFrame_Main extends JFrame {
 				lbl_month.setText(monthToString());
 			}
 		});
-		btnPreviousmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_24x24/application_arrow_left_24x24.png")));
+		btnPreviousmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource(
+				"/resources/img_24x24/application_arrow_left_24x24.png")));
 		GroupLayout gl_monthlyView = new GroupLayout(monthlyView);
 		gl_monthlyView.setHorizontalGroup(
 			gl_monthlyView.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_monthlyView.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_monthlyView.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
+					.addGroup(gl_monthlyView.createParallelGroup(Alignment.
+							LEADING)
+						.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 
+								944, Short.MAX_VALUE)
 						.addGroup(gl_monthlyView.createSequentialGroup()
 							.addComponent(lbl_month)
-							.addPreferredGap(ComponentPlacement.RELATED, 672, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 672, 
+									Short.MAX_VALUE)
 							.addComponent(btnPreviousmonth)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnNextmonth)))
@@ -216,18 +238,22 @@ public class JFrame_Main extends JFrame {
 		gl_monthlyView.setVerticalGroup(
 			gl_monthlyView.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_monthlyView.createSequentialGroup()
-					.addGroup(gl_monthlyView.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_monthlyView.createParallelGroup(Alignment.
+							TRAILING)
 						.addGroup(gl_monthlyView.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(lbl_month)
-							.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED, 24, 
+									Short.MAX_VALUE))
 						.addGroup(gl_monthlyView.createSequentialGroup()
 							.addGap(21)
-							.addGroup(gl_monthlyView.createParallelGroup(Alignment.TRAILING)
+							.addGroup(gl_monthlyView.createParallelGroup(
+									Alignment.TRAILING)
 								.addComponent(btnPreviousmonth)
 								.addComponent(btnNextmonth))
 							.addPreferredGap(ComponentPlacement.UNRELATED)))
-					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 
+							381, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		tbl_monthly_view = new JTable();
@@ -237,7 +263,9 @@ public class JFrame_Main extends JFrame {
 				btnEditDelete.setEnabled(false);
 				for (int d=0;d<7;d++) {
 				     for (int x=0;x<6;x++) {
-				    	 if ((x == tbl_monthly_view.getSelectedRow()) && (d == tbl_monthly_view.getSelectedColumn()) && (monthly_view_date_holder[d][x] != null)){
+				    	 if ((x == tbl_monthly_view.getSelectedRow()) && (
+				    			 d == tbl_monthly_view.getSelectedColumn()) 
+				    			 && (monthly_view_date_holder[d][x] != null)){
 				    		 btnEditDelete.setEnabled(true);
 				    	 System.out.println(monthly_view_date_holder[d][x]);
 				    	 }
@@ -264,7 +292,8 @@ public class JFrame_Main extends JFrame {
 		) {
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
-				String.class, String.class, String.class, String.class, String.class, String.class, String.class
+				String.class, String.class, String.class, String.class, 
+				String.class, String.class, String.class
 			};
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
@@ -290,23 +319,34 @@ public class JFrame_Main extends JFrame {
 		monthlyView.setLayout(gl_monthlyView);
 		
 		
-		Calendar.addTab("Weekly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_weekly_16x16.png")), weeklyView, null);
+		Calendar.addTab("Weekly", new ImageIcon(JFrame_Main.class.getResource
+				("/resources/img_16x16/application_events_weekly_16x16.png")), 
+				weeklyView, null);
 		
 		
-		Calendar.addTab("Daily", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")), dailyView, null);
+		Calendar.addTab("Daily", new ImageIcon(JFrame_Main.class.getResource(
+				"/resources/img_16x16/application_events_16x16.png")), 
+				dailyView, null);
 		
 		
-		tabbedPane.addTab("Address Book", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_address_book_16x16.png")), AddressBook, null);
+		tabbedPane.addTab("Address Book", new ImageIcon(JFrame_Main.class.
+				getResource("/resources/img_16x16/" +
+						"application_address_book_16x16.png")), AddressBook, 
+						null);
 		
 		
-		btnAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_contact_48x48.png")));
+		btnAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("" +
+				"/resources/img_48x48/application_contact_48x48.png")));
 		
 		
-		btnUpdatedeleteContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
+		btnUpdatedeleteContact.setIcon(new ImageIcon(JFrame_Main.class.
+				getResource("/resources/img_48x48/application_rename_4" +
+						"8x48.png")));
 		
 		
 		lblAddressBook.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblAddressBook.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_address_book_48x48.png")));
+		lblAddressBook.setIcon(new ImageIcon(JFrame_Main.class.getResource
+				("/resources/img_48x48/application_address_book_48x48.png")));
 		
 		
 		
@@ -318,11 +358,14 @@ public class JFrame_Main extends JFrame {
 			gl_AddressBook.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_AddressBook.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_AddressBook.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 949, Short.MAX_VALUE)
+					.addGroup(gl_AddressBook.createParallelGroup(Alignment.
+							LEADING)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 
+								949, Short.MAX_VALUE)
 						.addGroup(gl_AddressBook.createSequentialGroup()
 							.addComponent(lblAddressBook)
-							.addPreferredGap(ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 
+									341, Short.MAX_VALUE)
 							.addComponent(btnUseAlternativeAddress)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnAddContact)
@@ -334,14 +377,17 @@ public class JFrame_Main extends JFrame {
 			gl_AddressBook.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_AddressBook.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_AddressBook.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_AddressBook.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_AddressBook.createParallelGroup(Alignment.
+							LEADING)
+						.addGroup(gl_AddressBook.createParallelGroup(Alignment.
+								BASELINE)
 							.addComponent(btnUpdatedeleteContact)
 							.addComponent(btnAddContact)
 							.addComponent(btnUseAlternativeAddress))
 						.addComponent(lblAddressBook))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 397, 
+							Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		
@@ -355,12 +401,15 @@ public class JFrame_Main extends JFrame {
 				{null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"First Name", "Surname", "Address", "Postcode", "Mobile No.", "Home No.", "Email", "Fax No.", "Website"
+				"First Name", "Surname", "Address", "Postcode", "Mobile No.", 
+				"Home No.", "Email", "Fax No.", "Website"
 			}
 		) {
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
-				String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class
+				String.class, String.class, String.class, String.class, 
+				String.class, String.class, String.class, String.class, 
+				String.class
 			};
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			//New classes?
@@ -368,7 +417,8 @@ public class JFrame_Main extends JFrame {
 				return columnTypes[columnIndex];
 			}
 			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, false, false, false, false
+				false, false, false, false, false, false, false, 
+				false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -424,7 +474,8 @@ public class JFrame_Main extends JFrame {
                      break;
         }
         
-        monthlyViewString = (monthlyViewString + " " + global_calendar.get(Calendar.YEAR));
+        monthlyViewString = (monthlyViewString + " " + global_calendar.get(
+        		Calendar.YEAR));
         
         return monthlyViewString;
 	}
@@ -446,19 +497,25 @@ public class JFrame_Main extends JFrame {
 		for (int i = 0; i < 6; i++){
 			for (int d = 0; d < 7; d++){
 				z++;
-				if ((z >= 0) && (z <= (local_calendar.getActualMaximum(Calendar.DAY_OF_MONTH) - 1))) {
+				if ((z >= 0) && (z <= (local_calendar.getActualMaximum(
+						Calendar.DAY_OF_MONTH) - 1))) {
 					local_calendar.set(Calendar.DATE, z+1);
 					DateFormat df = new SimpleDateFormat("d/M/yy");
 					Date currentDate = (local_calendar.getTime());
 			        monthly_view_date_holder[d][i] = df.format(currentDate);
-		            tbl_monthly_view.getModel().setValueAt(local_calendar.get(Calendar.DAY_OF_MONTH),i,d);
+		            tbl_monthly_view.getModel().setValueAt(local_calendar.get(
+		            		Calendar.DAY_OF_MONTH),i,d);
 					ListIterator<Event> litr = global_events.listIterator();
 				    while (litr.hasNext()) {
 				      Event element = litr.next();
-				      SimpleDateFormat formatter = new SimpleDateFormat("d/M/yy");
+				      SimpleDateFormat formatter = new SimpleDateFormat(
+				    		  "d/M/yy");
 				      
-				      if ((formatter.format(element.GetSDate()).compareTo(df.format(currentDate))) == 0) {
-				    	  tbl_monthly_view.getModel().setValueAt(local_calendar.get(Calendar.DAY_OF_MONTH) + " - " + element.GetTitle(),i,d);
+				      if ((formatter.format(element.GetSDate()).compareTo(
+				    		  df.format(currentDate))) == 0) {
+				    	  tbl_monthly_view.getModel().setValueAt(
+				    			  local_calendar.get(Calendar.DAY_OF_MONTH) 
+				    			  + " - " + element.GetTitle(),i,d);
 				      };
 				      System.out.println();
 				    }				    
