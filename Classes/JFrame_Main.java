@@ -9,8 +9,6 @@ import java.awt.Toolkit;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -40,7 +38,7 @@ public class JFrame_Main extends JFrame {
 	 * THIS IS THE MAIN APPLICATION
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	private JPanel contentPane = new JPanel();
 	private JTable tbl_address_book;
 	private static JTable tbl_monthly_view;
 	private static Calendar global_calendar;
@@ -62,10 +60,12 @@ public class JFrame_Main extends JFrame {
 	private JPanel AddressBook = new JPanel();
 	private JPanel dailyView = new JPanel();
 	private JPanel weeklyView = new JPanel();
-	private JButton btnAddEvent, btnAddTask, btnEditDelete;
+	private JButton btnAddEvent = new JButton("Add Event");;
+	private JButton btnEditDelete = new JButton("Edit/Delete");
 	private final JLabel lbl_month = new JLabel("Month YYYY");
 	private JPanel monthlyView = new JPanel();
 	private JButton btnSearch = new JButton("Search");
+	private JButton btnAddTask = new JButton("Add Task");
 	private JSeparator separator = new JSeparator();
 	
 	
@@ -112,11 +112,9 @@ public class JFrame_Main extends JFrame {
 		JMenuBar menuBar = new Toolbar();
 		setJMenuBar(menuBar);
 		
-		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		btnAddEvent = new JButton("Add Event");
 		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
 		btnAddEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -126,11 +124,11 @@ public class JFrame_Main extends JFrame {
 			}
 		});
 		
-		btnAddTask = new JButton("Add Task");
+		
 		btnAddTask.setEnabled(false);
 		btnAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_tasks_48x48.png")));
 		
-		btnEditDelete = new JButton("Edit/Delete");
+		
 		btnEditDelete.setEnabled(false);
 		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
 		
