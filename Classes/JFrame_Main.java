@@ -33,6 +33,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import com.apple.eawt.*;
 
 public class JFrame_Main extends JFrame {
 
