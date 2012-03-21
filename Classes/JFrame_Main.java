@@ -9,8 +9,6 @@ import java.awt.Toolkit;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -33,7 +31,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import com.apple.eawt.*;
 
 public class JFrame_Main extends JFrame {
 
@@ -49,9 +46,28 @@ public class JFrame_Main extends JFrame {
 	private static EventFileReader efr = new EventFileReader();
 	private static String[][] monthly_view_date_holder = new String[7][6];
 
+	private ActionListener listener;
+	
+	
+	//Declare all objects to be used in the main window
+	private JButton btnUseAlternativeAddress = 
+			new JButton("Use Alternative Address Book Manager");
+	private JScrollPane scrollPane = new JScrollPane();
+	private JLabel lblAddressBook = new JLabel("Address Book");
+	private JButton btnUpdatedeleteContact = new JButton(
+			"Update/Delete Contact");
+	private JButton btnAddContact = new JButton("Add Contact");
+	private JPanel AddressBook = new JPanel();
+	private JPanel dailyView = new JPanel();
+	private JPanel weeklyView = new JPanel();
+	private JButton btnAddEvent, btnAddTask, btnEditDelete, btnSearch;
+	
+	
+	
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		try {
 			global_calendar = Calendar.getInstance();			
@@ -77,162 +93,26 @@ public class JFrame_Main extends JFrame {
 	}
 	
 	/**
-	 * Create the frame.
+	 * Create the frame. 
 	 */
 	@SuppressWarnings("serial")
 	public JFrame_Main() {
-		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame_Main.class.getResource("/resources/application_icon.png")));
-		setTitle("Digital Organizer - | cs235group9a4 |");
+		setTitle("Digital Organizer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 50, 1000, 700);
 		
-		JMenuBar menuBar = new JMenuBar();
+		//Set the toolbar
+		System.setProperty("apple.laf.useScreenMenuBar", "true"); //Make it look good on macs
+		JMenuBar menuBar = new Toolbar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnFile = new JMenu("File");
-		menuBar.add(mnFile);
-		
-		JMenuItem mntmExit = new JMenuItem("Exit");
-		mntmExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-			}
-		});
-		
-		JMenuItem mntmAddEvent = new JMenuItem("Add Event");
-		mnFile.add(mntmAddEvent);
-		mntmAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")));
-		
-		JMenuItem mntmAddTask = new JMenuItem("Add Task");
-		mntmAddTask.setEnabled(false);
-		mnFile.add(mntmAddTask);
-		mntmAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_tasks_16x16.png")));
-		
-		JMenuItem mntmAddContact = new JMenuItem("Add Contact");
-		mnFile.add(mntmAddContact);
-		mntmAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_contact_16x16.png")));
-		
-		JSeparator separator_1 = new JSeparator();
-		mnFile.add(separator_1);
-		
-		JMenuItem mntmImportAddressBook = new JMenuItem("Import Address Book");
-		mntmImportAddressBook.setEnabled(false);
-		mnFile.add(mntmImportAddressBook);
-		
-		JMenuItem mntmImportCalendar = new JMenuItem("Import Calendar");
-		mntmImportCalendar.setEnabled(false);
-		mnFile.add(mntmImportCalendar);
-		
-		JSeparator separator_2 = new JSeparator();
-		mnFile.add(separator_2);
-		
-		JMenuItem mntmExportAddressBook = new JMenuItem("Export Address Book");
-		mntmExportAddressBook.setEnabled(false);
-		mnFile.add(mntmExportAddressBook);
-		
-		JMenuItem mntmExportCalendar = new JMenuItem("Export Calendar");
-		mntmExportCalendar.setEnabled(false);
-		mnFile.add(mntmExportCalendar);
-		
-		JSeparator separator_3 = new JSeparator();
-		mnFile.add(separator_3);
-		
-		JMenuItem mntmPageSetup = new JMenuItem("Page Setup...");
-		mntmPageSetup.setEnabled(false);
-		mnFile.add(mntmPageSetup);
-		
-		JMenuItem mntmPrint = new JMenuItem("Print");
-		mntmPrint.setEnabled(false);
-		mnFile.add(mntmPrint);
-		
-		JSeparator separator_4 = new JSeparator();
-		mnFile.add(separator_4);
-		mntmExit.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_exit_16x16.png")));
-		mnFile.add(mntmExit);
-		
-		JMenu mnEdit = new JMenu("Edit");
-		menuBar.add(mnEdit);
-		
-		JMenuItem mntmUndo = new JMenuItem("Undo");
-		mntmUndo.setEnabled(false);
-		mntmUndo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_undo_16x16.png")));
-		mnEdit.add(mntmUndo);
-		
-		JMenuItem mntmRedo = new JMenuItem("Redo");
-		mntmRedo.setEnabled(false);
-		mntmRedo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_redo_16x16.png")));
-		mnEdit.add(mntmRedo);
-		
-		JSeparator separator_5 = new JSeparator();
-		mnEdit.add(separator_5);
-		
-		JMenuItem mntmCut = new JMenuItem("Cut");
-		mntmCut.setEnabled(false);
-		mnEdit.add(mntmCut);
-		
-		JMenuItem mntmCopy = new JMenuItem("Copy");
-		mntmCopy.setEnabled(false);
-		mnEdit.add(mntmCopy);
-		
-		JMenuItem mntmPaste = new JMenuItem("Paste");
-		mntmPaste.setEnabled(false);
-		mnEdit.add(mntmPaste);
-		
-		JSeparator separator_6 = new JSeparator();
-		mnEdit.add(separator_6);
-		
-		JMenuItem mntmFindEvents = new JMenuItem("Find Events");
-		mntmFindEvents.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")));
-		mnEdit.add(mntmFindEvents);
-		
-		JMenuItem mntmFindTasks = new JMenuItem("Find Tasks");
-		mntmFindTasks.setEnabled(false);
-		mntmFindTasks.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_tasks_16x16.png")));
-		mnEdit.add(mntmFindTasks);
-		
-		JMenuItem mntmFindContact = new JMenuItem("Find Contact");
-		mntmFindContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_find_16x16.png")));
-		mnEdit.add(mntmFindContact);
-		
-		JMenu mnNewMenu = new JMenu("Views");
-		menuBar.add(mnNewMenu);
-		
-		JMenuItem mntmDailyView = new JMenuItem("Daily View");
-		mntmDailyView.setEnabled(false);
-		mntmDailyView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")));
-		mnNewMenu.add(mntmDailyView);
-		
-		JMenuItem mntmWeeklyView = new JMenuItem("Weekly View");
-		mntmWeeklyView.setEnabled(false);
-		mntmWeeklyView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_weekly_16x16.png")));
-		mnNewMenu.add(mntmWeeklyView);
-		
-		JMenuItem mntmMonthlyView = new JMenuItem("Monthly View");
-		mntmMonthlyView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_monthly_16x16.png")));
-		mnNewMenu.add(mntmMonthlyView);
-		
-		JSeparator separator_7 = new JSeparator();
-		mnNewMenu.add(separator_7);
-		
-		JMenuItem mntmAddressBookView = new JMenuItem("Address Book View");
-		mntmAddressBookView.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_address_book_16x16.png")));
-		mnNewMenu.add(mntmAddressBookView);
-		
-		JMenu mnHelp = new JMenu("Help");
-		menuBar.add(mnHelp);
-		
-		JMenuItem mntmHelpDocumentation = new JMenuItem("Help Contents");
-		mntmHelpDocumentation.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_help_16x16.png")));
-		mnHelp.add(mntmHelpDocumentation);
-		
-		JMenuItem mntmAbout = new JMenuItem("About Digital Organizer");
-		mnHelp.add(mntmAbout);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnAddEvent = new JButton("Add Event");
+		btnAddEvent = new JButton("Add Event");
+		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
 		btnAddEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFrame_Events form = new JFrame_Events();
@@ -240,22 +120,21 @@ public class JFrame_Main extends JFrame {
 		        System.out.println(tbl_monthly_view.getSelectedColumn() + " " + tbl_monthly_view.getSelectedRow());	        
 			}
 		});
-		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
 		
-		JButton btnAddTask = new JButton("Add Task");
+		btnAddTask = new JButton("Add Task");
 		btnAddTask.setEnabled(false);
 		btnAddTask.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_tasks_48x48.png")));
+		
+		btnEditDelete = new JButton("Edit/Delete");
+		btnEditDelete.setEnabled(false);
+		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
+		
+		btnSearch = new JButton("Search");
+		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
 		
 		JSeparator separator = new JSeparator();
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		
-		final JButton btnEditDelete = new JButton("Edit/Delete");
-		btnEditDelete.setEnabled(false);
-		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
-		
-		JButton btnSearch = new JButton("Search");
-		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -284,6 +163,8 @@ public class JFrame_Main extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
 		);
+		
+		
 		
 		final JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
 		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
@@ -347,7 +228,6 @@ public class JFrame_Main extends JFrame {
 					.addContainerGap())
 		);
 		
-		tbl_monthly_view = new JTable();
 		tbl_monthly_view.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -406,41 +286,29 @@ public class JFrame_Main extends JFrame {
 		scrollPane_1.setViewportView(tbl_monthly_view);
 		monthlyView.setLayout(gl_monthlyView);
 		
-		JPanel weeklyView = new JPanel();
+		
 		Calendar.addTab("Weekly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_weekly_16x16.png")), weeklyView, null);
 		
-		JPanel dailyView = new JPanel();
+		
 		Calendar.addTab("Daily", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")), dailyView, null);
 		
-		JPanel AddressBook = new JPanel();
+		
 		tabbedPane.addTab("Address Book", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_address_book_16x16.png")), AddressBook, null);
 		
-		JButton btnAddContact = new JButton("Add Contact");
+		
 		btnAddContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_contact_48x48.png")));
 		
-		JButton btnUpdatedeleteContact = new JButton("Update/Delete Contact");
+		
 		btnUpdatedeleteContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
 		
-		JLabel lblAddressBook = new JLabel("Address Book");
+		
 		lblAddressBook.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblAddressBook.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_address_book_48x48.png")));
 		
-		JScrollPane scrollPane = new JScrollPane();
 		
-		JButton btnUseAlternativeAddress = new JButton("Use Alternative Address Book Manager");
-		btnUseAlternativeAddress.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					ContactManager manager = new ContactManager();
-					manager.Load("CONTACTS.csv");
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}});
+		
+		
+		btnUseAlternativeAddress.addActionListener(listener);
 		
 		GroupLayout gl_AddressBook = new GroupLayout(AddressBook);
 		gl_AddressBook.setHorizontalGroup(
@@ -474,7 +342,7 @@ public class JFrame_Main extends JFrame {
 					.addContainerGap())
 		);
 		
-		tbl_address_book = new JTable();
+		
 		scrollPane.setViewportView(tbl_address_book);
 		tbl_address_book.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -595,6 +463,17 @@ public class JFrame_Main extends JFrame {
 		}	
 	}
 	
+	public void actionPerformed(ActionEvent e){
+		if(e.getSource() == btnUseAlternativeAddress){
+			try {
+				ContactManager manager = new ContactManager();
+				manager.Load("CONTACTS.csv");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
 	
 	//+ month
 	public static void increment_month(){
