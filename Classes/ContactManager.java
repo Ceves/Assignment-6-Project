@@ -132,11 +132,10 @@ public class ContactManager{
 	 * 
 	 * This method should only be run at startup of the program.
 	 * 
-	 * @param fileLocation the location of the main contacts csv file to be read.
 	 * @throws Exception
 	 */
 	@SuppressWarnings("rawtypes")
-	public void Load(String fileLocation) throws Exception {
+	public ArrayList<Contact> Load() throws Exception {
 		/*
 		 * A note to make here is that the csvreader method .readAll() reads each line of the csv file
 		 * and stores each line as a String[] element in the list myEntries. 
@@ -159,7 +158,7 @@ public class ContactManager{
 		}
 		
 		m_contactReader.close();
-		
+		return m_contactList;
 	}
 	
 	/**
