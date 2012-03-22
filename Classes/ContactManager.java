@@ -136,7 +136,7 @@ public class ContactManager{
 	 * @throws Exception
 	 */
 	@SuppressWarnings("rawtypes")
-	public void Load(String fileLocation) throws Exception {
+	public ArrayList<Contact> Load(String fileLocation) throws Exception {
 		/*
 		 * A note to make here is that the csvreader method .readAll() reads each line of the csv file
 		 * and stores each line as a String[] element in the list myEntries. 
@@ -159,7 +159,7 @@ public class ContactManager{
 		}
 		
 		m_contactReader.close();
-		
+		return m_contactList;
 	}
 	
 	/**
