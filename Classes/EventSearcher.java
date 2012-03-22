@@ -13,23 +13,22 @@ import java.util.ArrayList;
  *        a collection of Event objects and return a collection of events that
  *        meet a specified criteria.
  */
-public class EventSearcher extends Searcher {
+public class EventSearcher extends Searcher<Event> {
 
 	private EventFileReader m_reader;
-	private ArrayList<Event> m_eventArray;
 
 	/**
 	 * The default constructor initialises the global variables and loads the
 	 * EVENTS.csv file into an array list.
 	 */
 	public EventSearcher() {
+		super();
 		m_reader = new EventFileReader();
-		m_eventArray = new ArrayList<Event>();
-		m_eventArray = m_reader.load("EVENTS.csv");
+		m_dataArray = m_reader.load("EVENTS.csv");
 	}
 
 	/**
-	 * The FindByName method takes a String which will be matched to a
+	 * The FindByTitle method takes a String which will be matched to a
 	 * substrings of existing Events held in the collection array. If an
 	 * existing event's title is matched to the name parameter, that event is
 	 * added to an array list. A collection of events which contain the
@@ -41,7 +40,7 @@ public class EventSearcher extends Searcher {
 	 * @throws Exception
 	 *             Exception thrown if parameter is overloaded.
 	 */
-	public ArrayList<Event> FindByName(String name) throws Exception {
+	public ArrayList<Event> FindByTitle(String name) throws Exception {
 		ArrayList<Event> events = new ArrayList<Event>();
 		name = name.toLowerCase();
 
@@ -51,11 +50,11 @@ public class EventSearcher extends Searcher {
 					+ " characters!");
 		}
 
-		for (int i = 0; i < m_eventArray.size(); i++) {
-			String title = m_eventArray.get(i).GetTitle().toLowerCase();
+		for (int i = 0; i < m_dataArray.size(); i++) {
+			String title = m_dataArray.get(i).GetTitle().toLowerCase();
 
 			if (title.indexOf(name) >= MATCH_ANYWHERE) {
-				events.add(m_eventArray.get(i));
+				events.add(m_dataArray.get(i));
 			}
 		}
 		return events;
@@ -69,7 +68,7 @@ public class EventSearcher extends Searcher {
 
 		// Test overloading the String parameter
 		try {
-			result = search.FindByName("iiiiiiiiiiiiiiiiii"
+			result = search.FindByTitle("iiiiiiiiiiiiiiiiii"
 					+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 			System.out.println("Fail: Parameter too long!");
 		} catch (Exception e) {
@@ -78,7 +77,7 @@ public class EventSearcher extends Searcher {
 
 		// Test regular String input
 		try {
-			result = search.FindByName("");
+			result = search.FindByTitle("");
 			System.out.println("Pass: Method returned successfully");
 		} catch (Exception e) {
 			System.out.println("Fail: " + e.getMessage());
