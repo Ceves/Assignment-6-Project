@@ -146,7 +146,7 @@ public class JFrame_Main extends JFrame {
 		if(e.getSource() == btnUseAlternativeAddress){
 			try {
 				ContactManager manager = new ContactManager();
-				manager.Load("CONTACTS.csv");
+				manager.Load();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
