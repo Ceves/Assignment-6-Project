@@ -3,7 +3,10 @@
  */
 package CalendarViews;
 
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -25,6 +28,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Classes.Event;
@@ -53,8 +57,9 @@ public class MonthView extends JPanel{
 		global_calendar = Calendar.getInstance();			
 		global_events = efr.load("EVENTS.csv");//test Load()
 		
+		setBorder(new EmptyBorder(0, 7, 0, 7));
+		
 		JScrollPane scrollPane_1 = new JScrollPane();
-
 
 		lbl_month.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lbl_month.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_monthly_48x48.png")));
@@ -76,38 +81,35 @@ public class MonthView extends JPanel{
 			}
 		});
 		btnPreviousmonth.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_24x24/application_arrow_left_24x24.png")));
-		GroupLayout gl_monthlyView = new GroupLayout(this);
-		gl_monthlyView.setHorizontalGroup(
-				gl_monthlyView.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_monthlyView.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_monthlyView.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
-								.addGroup(gl_monthlyView.createSequentialGroup()
-										.addComponent(lbl_month)
-										.addPreferredGap(ComponentPlacement.RELATED, 672, Short.MAX_VALUE)
-										.addComponent(btnPreviousmonth)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnNextmonth)))
-										.addContainerGap())
-				);
-		gl_monthlyView.setVerticalGroup(
-				gl_monthlyView.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_monthlyView.createSequentialGroup()
-						.addGroup(gl_monthlyView.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_monthlyView.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(lbl_month)
-										.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
-										.addGroup(gl_monthlyView.createSequentialGroup()
-												.addGap(21)
-												.addGroup(gl_monthlyView.createParallelGroup(Alignment.TRAILING)
-														.addComponent(btnPreviousmonth)
-														.addComponent(btnNextmonth))
-														.addPreferredGap(ComponentPlacement.UNRELATED)))
-														.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-														.addContainerGap())
-				);
+		
+		this.setLayout(new GridBagLayout());
+		
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.ipady = 10;
+		c.weightx=1;
+		this.add(lbl_month, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 2;
+		c.gridy = 0;
+		c.weightx=0.15;
+		this.add(btnPreviousmonth,c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 3;
+		c.gridy = 0;
+		c.weightx=0.15;
+		this.add(btnNextmonth,c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		//c.weightx = 3;
+		c.gridwidth = 4;
+		c.ipadx = 100;
+		c.ipadx = 100;
+		c.gridx = 0;
+		c.gridy = 1;
+		this.add(scrollPane_1,c);
+		
 		tbl_monthly_view = new JTable();
 		tbl_monthly_view.addMouseListener(new MouseAdapter() {
 			@Override
@@ -162,10 +164,10 @@ public class MonthView extends JPanel{
 		tbl_monthly_view.getColumnModel().getColumn(4).setResizable(false);
 		tbl_monthly_view.getColumnModel().getColumn(5).setResizable(false);
 		tbl_monthly_view.getColumnModel().getColumn(6).setResizable(false);
-		tbl_monthly_view.setRowHeight(59);
+		tbl_monthly_view.setRowHeight(68);
 		tbl_monthly_view.getTableHeader().setReorderingAllowed(false); 
+		tbl_monthly_view.setGridColor(Color.lightGray);
 		scrollPane_1.setViewportView(tbl_monthly_view);
-		this.setLayout(gl_monthlyView);	
 	}
 
 	/**

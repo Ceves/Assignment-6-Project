@@ -105,18 +105,18 @@ public class JFrame_Events extends JFrame {
 		
 		JSeparator separator_4 = new JSeparator();
 		mnFile.add(separator_4);
-		mntmExit.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_exit_16x16.png")));
+		mntmExit.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_exit_16x16.png")));
 		mnFile.add(mntmExit);
 		
 		JMenu mnEdit = new JMenu("Edit");
 		menuBar.add(mnEdit);
 		
 		JMenuItem mntmUndo = new JMenuItem("Undo");
-		mntmUndo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_undo_16x16.png")));
+		mntmUndo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_undo_16x16.png")));
 		mnEdit.add(mntmUndo);
 		
 		JMenuItem mntmRedo = new JMenuItem("Redo");
-		mntmRedo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_redo_16x16.png")));
+		mntmRedo.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_redo_16x16.png")));
 		mnEdit.add(mntmRedo);
 		
 		JSeparator separator_5 = new JSeparator();
@@ -135,22 +135,22 @@ public class JFrame_Events extends JFrame {
 		mnEdit.add(separator_6);
 		
 		JMenuItem mntmFindEvents = new JMenuItem("Find Events");
-		mntmFindEvents.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_events_16x16.png")));
+		mntmFindEvents.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")));
 		mnEdit.add(mntmFindEvents);
 		
 		JMenuItem mntmFindTasks = new JMenuItem("Find Tasks");
-		mntmFindTasks.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_tasks_16x16.png")));
+		mntmFindTasks.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_tasks_16x16.png")));
 		mnEdit.add(mntmFindTasks);
 		
 		JMenuItem mntmFindContact = new JMenuItem("Find Contact");
-		mntmFindContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_find_16x16.png")));
+		mntmFindContact.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_find_16x16.png")));
 		mnEdit.add(mntmFindContact);
 		
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
 		
 		JMenuItem mntmHelpDocumentation = new JMenuItem("Help Contents");
-		mntmHelpDocumentation.setIcon(new ImageIcon(JFrame_Main.class.getResource("/javagui/resources/img_16x16/application_help_16x16.png")));
+		mntmHelpDocumentation.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_help_16x16.png")));
 		mnHelp.add(mntmHelpDocumentation);
 		
 		JMenuItem mntmAbout = new JMenuItem("About Digital Organizer");
@@ -170,7 +170,7 @@ public class JFrame_Events extends JFrame {
 		textTitle.setColumns(10);
 		
 		JLabel lblEvents = new JLabel("Events");
-		lblEvents.setIcon(new ImageIcon(JFrame_Events.class.getResource("/javagui/resources/application_icon.png")));
+		lblEvents.setIcon(new ImageIcon(JFrame_Events.class.getResource("resources/application_icon.png")));
 		lblEvents.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
 		JSeparator separator = new JSeparator();
@@ -227,15 +227,15 @@ public class JFrame_Events extends JFrame {
 
 				efr.Save(global_events, "EVENTS.csv");
 				
-				JFrame_Main.refresh_monthly_view();
+				JFrame_Main.monthlyView.refresh_monthly_view();
 				dispose();
 				
 			}
 		});
-		btnSaveAndExit.setIcon(new ImageIcon(JFrame_Events.class.getResource("/javagui/resources/img_24x24/application_save_24x24.png")));
+		btnSaveAndExit.setIcon(new ImageIcon(JFrame_Events.class.getResource("/resources/img_24x24/application_save_24x24.png")));
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setIcon(new ImageIcon(JFrame_Events.class.getResource("/javagui/resources/img_24x24/application_delete_24x24.png")));
+		btnDelete.setIcon(new ImageIcon(JFrame_Events.class.getResource("/resources/img_24x24/application_delete_24x24.png")));
 		
 		JLabel lblAddress = new JLabel("Address");
 		

@@ -2,6 +2,8 @@ package Classes;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +32,7 @@ public class JFrame_Main extends JFrame {
 	private AddressBookView AddressBook = new AddressBookView();
 	private JPanel dailyView = new JPanel();
 	private JPanel weeklyView = new JPanel();
-	private MonthView monthlyView = new MonthView();
+	public MonthView monthlyView = new MonthView();
 	
 	//buttons
 	private JButton btnUseAlternativeAddress = 
@@ -85,14 +87,7 @@ public class JFrame_Main extends JFrame {
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setPreferredSize(getSize());
 		setContentPane(contentPane);
-		
-		
-		
-		
-		topBar.setLocation(0, 0);
-		topBar.setPreferredSize(new Dimension(1000,70));
 		
 		btnAddEvent = new JButton("Add Event");
 		btnAddEvent.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_events_48x48.png")));
@@ -112,29 +107,51 @@ public class JFrame_Main extends JFrame {
 		btnEditDelete.setEnabled(false);
 		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
 		
-		
 		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
-		
-		topBar.add(btnAddEvent);
-		topBar.add(btnAddTask);
-		topBar.add(btnEditDelete);
-		topBar.add(btnSearch);
-		
-		contentPane.add(topBar);
-				
+
 		JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
 		Calendar.addTab("Monthly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_monthly_16x16.png")), monthlyView, null);
 		Calendar.addTab("Weekly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_weekly_16x16.png")), weeklyView, null);
 		Calendar.addTab("Daily", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_16x16.png")), dailyView, null);
 		
+		monthlyView.setOpaque(false);
+		weeklyView.setOpaque(false);
+		dailyView.setOpaque(false);
+		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addTab("Calendar", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_icon_16x16.png")), Calendar, null);
 		tabbedPane.addTab("Address Book", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_address_book_16x16.png")), AddressBook, null);
 		tabbedPane.addTab("Task", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_tasks_16x16.png")), null, null);
+		AddressBook.setOpaque(false);
+		Calendar.setOpaque(false);
 		
-		contentPane.add(tabbedPane);
+		contentPane.setLayout(new GridBagLayout());
 		
-		
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weightx = 0;
+		contentPane.add(btnAddEvent, c);
+		c.gridx = 1;
+		c.gridy = 0;
+		c.weightx = 0;
+		contentPane.add(btnAddTask,c);
+		c.gridx = 2;
+		c.gridy = 0;
+		c.weightx = 0;
+		contentPane.add(btnEditDelete,c);
+		c.gridx = 4;
+		c.gridy = 0;
+		c.gridwidth = 1;
+		c.weightx = 0;
+		c.anchor = GridBagConstraints.LINE_END;
+		contentPane.add(btnSearch,c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 5;
+		c.weightx = 1;
+		contentPane.add(tabbedPane,c);
 
 		MonthView.refresh_monthly_view();
 		monthlyView.lbl_month.setText(MonthView.monthToString());

@@ -1,6 +1,8 @@
 package AddressBookViews;
 
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -36,37 +38,33 @@ public class AddressBookView extends JPanel{
 		lblAddressBook.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblAddressBook.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_address_book_48x48.png")));
 				
-		GroupLayout gl_AddressBook = new GroupLayout(this);
-		gl_AddressBook.setHorizontalGroup(
-			gl_AddressBook.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_AddressBook.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_AddressBook.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 949, Short.MAX_VALUE)
-						.addGroup(gl_AddressBook.createSequentialGroup()
-							.addComponent(lblAddressBook)
-							.addPreferredGap(ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
-							.addComponent(btnAddContact)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnUpdatedeleteContact)))
-					.addContainerGap())
-		);
-		gl_AddressBook.setVerticalGroup(
-			gl_AddressBook.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_AddressBook.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_AddressBook.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_AddressBook.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnUpdatedeleteContact)
-							.addComponent(btnAddContact)
-							)
-						.addComponent(lblAddressBook))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+		this.setLayout(new GridBagLayout());
 		
-		
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weightx=1;
+		this.add(lblAddressBook, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 2;
+		c.gridy = 0;
+		c.weightx=0.15;
+		this.add(btnAddContact,c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 3;
+		c.gridy = 0;
+		c.weightx=0.15;
+		this.add(btnUpdatedeleteContact,c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		//c.weightx = 3;
+		c.gridwidth = 4;
+		c.ipadx = 100;
+		c.ipadx = 100;
+		c.gridx = 0;
+		c.gridy = 1;
+		this.add(scrollPane,c);
+
 		scrollPane.setViewportView(tbl_address_book);
 		tbl_address_book = new JTable();
 		tbl_address_book.setModel(new DefaultTableModel(
@@ -106,7 +104,6 @@ public class AddressBookView extends JPanel{
 		tbl_address_book.getColumnModel().getColumn(8).setResizable(false);
 		tbl_address_book.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(tbl_address_book);
-		this.setLayout(gl_AddressBook);
 		//contentPane.setLayout(gl_contentPane);
 		
 	}
