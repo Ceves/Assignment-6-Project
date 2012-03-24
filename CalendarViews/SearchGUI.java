@@ -27,7 +27,7 @@ public class SearchGUI extends JFrame {
 			"Description" };
 
 	public SearchGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
 		initComponents();
 		pack();
 		setVisible(true);
@@ -125,6 +125,7 @@ public class SearchGUI extends JFrame {
 				m_c.weightx = 1;
 
 				m_pane = new JScrollPane(m_resultTable);
+				m_resultTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 				m_panel.add(m_pane, m_c);
 				m_tableAdded = true;
 
