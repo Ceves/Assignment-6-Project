@@ -18,6 +18,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import CalendarViews.MonthView;
+import CalendarViews.SearchGUI;
 import AddressBookViews.*;
 
 @SuppressWarnings("serial")
@@ -108,7 +109,12 @@ public class JFrame_Main extends JFrame {
 		btnEditDelete.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_rename_48x48.png")));
 		
 		btnSearch.setIcon(new ImageIcon(JFrame_Main.class.getResource("/resources/img_48x48/application_search_48x48.png")));
-
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new SearchGUI();
+			}
+		});
+		
 		JTabbedPane Calendar = new JTabbedPane(JTabbedPane.BOTTOM);
 		Calendar.addTab("Monthly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_monthly_16x16.png")), monthlyView, null);
 		Calendar.addTab("Weekly", new ImageIcon(JFrame_Main.class.getResource("/resources/img_16x16/application_events_weekly_16x16.png")), weeklyView, null);
