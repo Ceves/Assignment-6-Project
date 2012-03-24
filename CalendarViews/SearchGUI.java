@@ -11,10 +11,12 @@ import Classes.Event;
 import Classes.EventSearcher;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
 public class SearchGUI extends JFrame {
 	
+	private DefaultTableModel m_model;
 	private JPanel m_panel;
 	private JLabel m_labelTitle;
 	private JButton m_buttonSearch;
@@ -23,7 +25,7 @@ public class SearchGUI extends JFrame {
 	private Object[] m_resultArray;
 	private GridBagConstraints m_c;
 	public static final String[] COLUMN_NAMES =
-		{"Event", "City", "Place", "Start Date", "End Date",
+		{"Event", "Location", "Address", "Start Date", "End Date",
 		 "Start Time", "End Time", "Description"};
 
 	public SearchGUI() {
@@ -35,6 +37,8 @@ public class SearchGUI extends JFrame {
 	
 	public void initComponents() {
 		Handler handler = new Handler();
+		m_model = new DefaultTableModel();
+		m_model.setColumnIdentifiers(COLUMN_NAMES);
 		
 		m_c = new GridBagConstraints();
 		m_panel = new JPanel(new GridBagLayout());
@@ -76,34 +80,37 @@ public class SearchGUI extends JFrame {
 			if(e.getSource() == m_buttonSearch) {
 				String criteria = m_fieldCriteria.getText();
 				events = new ArrayList<Event>();
-				m_resultArray = new Object[events.size()-1];
-				
-				for(int i=0;i<events.size();i++) {
-					m_resultArray[0] = {"1"};
-					m_resultArray[0] = "2";
-					m_resultArray[0] = "3";
-					m_resultArray[0] = "4";
-					m_resultArray[0] = "5";
-					m_resultArray[0] = "6";
-					m_resultArray[0] = "7";
-					m_resultArray[0] = "8";
-				}
-				
-				m_resultTable = new JTable(m_resultArray, COLUMN_NAMES);
-				m_c.gridx = 0;
-				m_c.gridy = 3;
-				m_c.gridwidth = 5;
-				m_panel.add(m_resultTable, m_c);
-				pack();
 				
 				try {
 					events = search.FindByTitle(criteria);
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null, ex);
 				}
-				for(int i=0;i<events.size();i++) {
-					System.out.println(events.get(i).GetTitle());
+				
+				m_resultTable = new JTable();
+				m_resultTable.setModel(m_model);
+				
+				
+				for(Event i : events) {
+					String[] data = {i.GetTitle(),
+									 i.GetLocation(),
+									 i.GetAddress(),
+									 String.valueOf(i.GetSDate()),
+									 String.valueOf(i.GetEDate()),
+									 i.GetSTime(),
+									 i.GetETime(),
+									 i.GetDescription()};
+					m_model.addRow(data);
 				}
+				
+				m_c.gridx = 0;
+				m_c.gridy = 3;
+				m_c.fill = m_c.BOTH;
+				m_c.gridwidth = 3;
+				m_c.weightx = 1;
+				m_panel.add(m_resultTable, m_c);
+				
+				pack();
 				
 			}
 		}
